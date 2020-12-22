@@ -35,6 +35,7 @@ gem 'rubocop-performance', require: false
 
 gem 'strong_migrations'
 gem 'slim'
+gem 'annotate'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

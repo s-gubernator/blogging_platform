@@ -34,6 +34,7 @@ gem 'rubocop-rspec', require: false
 gem 'rubocop-performance', require: false
 
 gem 'strong_migrations'
+gem 'slim'
 gem 'annotate'
 
 group :development, :test do

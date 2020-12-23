@@ -16,7 +16,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:valid_user) { create(:user) }
+  let(:user) { build(:user) }
   let(:user_without_email) { build(:user,
                                     first_name: Faker::Name.unique.first_name,
                                     last_name: Faker::Name.unique.last_name,
@@ -30,16 +30,35 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'check factory presence' do
-    it { expect(valid_user).to be_persisted }
-  end
+  # describe 'check factory presence' do
+  #   it { expect(user).to be_persisted }
+  # end
 
   describe 'validations' do
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
 
     it 'should be valid with valid attributes' do
-      expect(valid_user).to be_valid
+      expect(user).to be_valid
+    end
+
+    # default email will be assigned on save
+    it 'should be valid without email' do
+      user.email = nil
+      user.save
+      expect(user).to be_valid
+    end
+
+    it 'should not be valid without first name' do
+      user.first_name = nil
+      user.save
+      expect(user).to_not be_valid
+    end
+
+    it 'should not be valid without last name' do
+      user.last_name = nil
+      user.save
+      expect(user).to_not be_valid
     end
   end
 

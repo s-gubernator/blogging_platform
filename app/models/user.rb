@@ -14,31 +14,12 @@
 #  index_users_on_lower_email  (lower((email)::text)) UNIQUE
 #
 class User < ApplicationRecord
-  APOSTROPHE_REGEXP = /['‘’]/
-
   validates :first_name, :last_name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
 
-  before_validation :ensure_email_is_present, on: :create
-
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  private
-  def ensure_email_is_present
-    if email.nil?
-      self.email = "#{first_name}.#{remove_apostrophe(last_name)}@example.com".downcase
-    end
-  end
-
-  def remove_apostrophe(string)
-    if string.present? && string.scan(APOSTROPHE_REGEXP).any?
-      string.gsub((APOSTROPHE_REGEXP), '_')
-    else
-      string
-    end
   end
 end

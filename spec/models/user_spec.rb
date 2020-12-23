@@ -26,9 +26,11 @@ RSpec.describe User, type: :model do
   end
 
   describe 'user validations' do
+    subject { user }
     it { should validate_presence_of(:first_name) }
     it { should validate_presence_of(:last_name) }
     it { should validate_presence_of(:email) }
+    it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
 
     it 'is valid with valid attributes' do
       expect(user).to be_valid
@@ -60,8 +62,22 @@ RSpec.describe User, type: :model do
     end
 
     it 'is not valid if email is too long' do
-      user.email =  't' * 244 + "@example.com"
+      user.email = 't' * 244 + "@example.com"
       expect(user).to_not be_valid
+    end
+  end
+
+  describe 'test user without email' do
+    let(:user_without_email) { build(:user, email: nil) }
+
+    it 'set default email' do
+      user_without_email.save
+      expect(user_without_email).to be_valid
+      expect(user_without_email.email).to eq(
+        %{ #{user_without_email.first_name}.
+          #{user_without_email.last_name.gsub(/['‘’]/, '_')}
+          @example.com }.gsub(/\s+/, "").strip.downcase
+      )
     end
   end
 end

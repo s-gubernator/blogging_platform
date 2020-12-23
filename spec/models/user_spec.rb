@@ -16,8 +16,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  APOSTROPHE_REGEXP = /['‘’]/
-  
   let(:valid_user) { create(:user) }
   let(:user_without_email) { build(:user,
                                     first_name: Faker::Name.unique.first_name,
@@ -25,8 +23,8 @@ RSpec.describe User, type: :model do
                                     email: nil) }
 
   def remove_apostrophe(string)
-    if string.present? && string.scan(APOSTROPHE_REGEXP).any?
-      string.gsub((APOSTROPHE_REGEXP), '_')
+    if string.present? && string.scan(User::APOSTROPHE_REGEXP).any?
+      string.gsub((User::APOSTROPHE_REGEXP), '_')
     else
       string
     end

@@ -28,7 +28,15 @@ class User < ApplicationRecord
   private
   def ensure_email_is_present
     if email.nil?
-      self.email = "#{first_name}.#{last_name}@example.com".downcase
+      self.email = "#{first_name}.#{remove_apostrophe(last_name)}@example.com".downcase
+    end
+  end
+
+  def remove_apostrophe(string)
+    if string.present? && string.scan(/['‘’]/).any?
+      string.gsub((/['‘’]/), '_')
+    else
+      string
     end
   end
 end

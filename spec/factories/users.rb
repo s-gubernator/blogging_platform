@@ -20,7 +20,11 @@ FactoryBot.define do
     email { Faker::Internet.unique.safe_email }
 
     after(:build) do |user|
-      user.email ||= "#{user.first_name}.#{user.last_name.gsub(/['‘’]/, '_')}@example.com".downcase
+      user.email ||= %{
+        #{user.first_name}.
+        #{user.last_name.gsub(/['‘’]/, '_')}
+        @example.com
+      }.gsub(/\s+/, "").strip.downcase
     end
   end
 end

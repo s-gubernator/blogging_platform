@@ -19,7 +19,7 @@ class User < ApplicationRecord
                     format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
 
-  before_validation :ensure_email_is_present
+  before_validation :ensure_email_is_present, on: :create
 
   def full_name
     "#{first_name} #{last_name}"

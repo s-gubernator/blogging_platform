@@ -16,5 +16,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:valid_user) { create(:user) }
+
+  describe 'check factory presence' do
+    it { expect(valid_user).to be_persisted }
+  end
+
+  describe 'validations' do
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:last_name) }
+
+    it 'should be valid with valid attributes' do
+      expect(valid_user).to be_valid
+    end
+  end
 end

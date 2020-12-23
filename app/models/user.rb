@@ -14,6 +14,8 @@
 #  index_users_on_lower_email  (lower((email)::text)) UNIQUE
 #
 class User < ApplicationRecord
+  APOSTROPHE_REGEXP = /['‘’]/
+
   validates :first_name, :last_name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: URI::MailTo::EMAIL_REGEXP },
@@ -33,8 +35,8 @@ class User < ApplicationRecord
   end
 
   def remove_apostrophe(string)
-    if string.present? && string.scan(/['‘’]/).any?
-      string.gsub((/['‘’]/), '_')
+    if string.present? && string.scan(APOSTROPHE_REGEXP).any?
+      string.gsub((APOSTROPHE_REGEXP), '_')
     else
       string
     end

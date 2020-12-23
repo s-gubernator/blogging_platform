@@ -14,9 +14,21 @@
 #  index_users_on_lower_email  (lower((email)::text)) UNIQUE
 #
 class User < ApplicationRecord
-  validates :first_name, presence: true, length: { maximum: 50 }
-  validates :last_name, presence: true, length: { maximum: 50 }
+  validates :first_name, :last_name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: URI::MailTo::EMAIL_REGEXP },
                     uniqueness: { case_sensitive: false }
+
+  before_validation :ensure_email_is_present
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
+  private
+  def ensure_email_is_present
+    if email.nil?
+      self.email = "#{first_name}.#{last_name}@example.com".downcase
+    end
+  end
 end

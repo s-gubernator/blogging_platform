@@ -16,11 +16,21 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
+  APOSTROPHE_REGEXP = /['‘’]/
+  
   let(:valid_user) { create(:user) }
   let(:user_without_email) { build(:user,
                                     first_name: Faker::Name.unique.first_name,
                                     last_name: Faker::Name.unique.last_name,
                                     email: nil) }
+
+  def remove_apostrophe(string)
+    if string.present? && string.scan(APOSTROPHE_REGEXP).any?
+      string.gsub((APOSTROPHE_REGEXP), '_')
+    else
+      string
+    end
+  end
 
   describe 'check factory presence' do
     it { expect(valid_user).to be_persisted }
@@ -39,9 +49,9 @@ RSpec.describe User, type: :model do
     it 'should be created with default email' do
       first_name = user_without_email.first_name
       last_name = user_without_email.last_name
-      default_email = "#{first_name}.#{last_name}@example.com".downcase
+      default_email = "#{first_name}.#{remove_apostrophe(last_name)}@example.com".downcase
       user_without_email.save
-      
+
       expect(user_without_email.email).to eq(default_email)
     end
   end

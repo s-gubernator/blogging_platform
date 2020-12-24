@@ -1,8 +1,19 @@
 language: ruby
+cache:
+  bundler: true
+  yarn: true
+  directories:
+    - node_modules
 rvm:
   - 2.7.2
 services:
   - postgres
+install:
+  - bundle install
+  - nvm install node --lts
+  - node -v
+  - npm i -g yarn
+  - yarn install
 before_script:
   - gem install bundler
   - psql -c 'create database travis_ci_test;' -U postgres
@@ -10,4 +21,5 @@ before_script:
   - RAILS_ENV=test bundle exec rake db:reset db:setup db:migrate
 script:
   - bundle exec rspec
-  - bundle exec rubocop --config .rubocop.yml
+  - bundle exec rubocop
+  - bundle exec brakeman

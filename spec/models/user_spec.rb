@@ -27,44 +27,17 @@ RSpec.describe User, type: :model do
 
   describe 'user validations' do
     subject { user }
+
     it { should validate_presence_of(:first_name) }
+    it { should validate_length_of(:first_name).is_at_most(50) }
+
     it { should validate_presence_of(:last_name) }
+    it { should validate_length_of(:last_name).is_at_most(50) }
+
     it { should validate_presence_of(:email) }
+    it { should validate_length_of(:email).is_at_most(255) }
     it { should validate_uniqueness_of(:email).ignoring_case_sensitivity }
-
-    it 'is valid with valid attributes' do
-      expect(user).to be_valid
-    end
-
-    it 'is not valid without first name' do
-      user.first_name = nil
-      expect(user).to_not be_valid
-    end
-
-    it 'is not valid without last name' do
-      user.last_name = nil
-      expect(user).to_not be_valid
-    end
-
-    it 'is not valid without email' do
-      user.email = nil
-      expect(user).to_not be_valid
-    end
-
-    it 'is not valid if first name is too long' do
-      user.first_name = 't' * 51
-      expect(user).to_not be_valid
-    end
-
-    it 'is not valid if last name is too long' do
-      user.last_name = 't' * 51
-      expect(user).to_not be_valid
-    end
-
-    it 'is not valid if email is too long' do
-      user.email = 't' * 244 + "@example.com"
-      expect(user).to_not be_valid
-    end
+    it { (user.email).should match(URI::MailTo::EMAIL_REGEXP) }
   end
 
   describe 'test user without email' do
@@ -74,10 +47,17 @@ RSpec.describe User, type: :model do
       user_without_email.save
       expect(user_without_email).to be_valid
       expect(user_without_email.email).to eq(
-        %{ #{user_without_email.first_name}.
-          #{user_without_email.last_name.gsub(/['‘’]/, '_')}
-          @example.com }.gsub(/\s+/, "").strip.downcase
+        "#{user_without_email.first_name}.#{user_without_email.last_name}@example.com".downcase.gsub(/['‘’]/, '_')
       )
+    end
+  end
+
+  describe '#full_name' do
+    it { should respond_to(:full_name) }
+
+    it 'collects Full Name from first_name and last_name' do
+      full_name = user.full_name
+      expect(full_name).to eq("#{user.first_name} #{user.last_name}")
     end
   end
 end

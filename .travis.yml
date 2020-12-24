@@ -4,8 +4,6 @@ rvm:
 services:
   - postgres
 before_script:
-  - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
-  - ruby -v
   - which ruby
   - gem install bundler --no-ri --no-rdoc
   - cp config/database.yml.gitlab config/database.yml

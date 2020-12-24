@@ -1,4 +1,5 @@
 [![Ruby Style Guide](https://img.shields.io/badge/code_style-rubocop-brightgreen.svg)](https://github.com/rubocop-hq/rubocop)
+[![Build Status](https://travis-ci.com/s-gubernator/blogging_platform.svg?branch=master)](https://travis-ci.com/s-gubernator/blogging_platform)
 
 # README
 

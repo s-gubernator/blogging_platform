@@ -2,3 +2,20 @@ require:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-performance
+
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'tmp/**/*'
+    - 'config/**/*'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'node_modules/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*.rake'
+    - 'spec/**/*'
+
+Style/Documentation:
+  Enabled: false

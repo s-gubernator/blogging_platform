@@ -1,15 +1,15 @@
 language: ruby
 rvm:
   - 2.7.2
-
-rspec:
-  script:
-    - bundle exec rails db:migrate RAILS_ENV=test
-    - bundle exec rspec
-
-rubocop:
-  script:
-    - bundle exec rubocop
-
-after_success:
-  - bundle exec codeclimate-test-reporter
+services:
+  - postgres
+before_script:
+  - apt-get update -qq && apt-get install -y -qq postgresql postgresql-contrib libpq-dev cmake
+  - ruby -v
+  - which ruby
+  - gem install bundler --no-ri --no-rdoc
+  - cp config/database.yml.gitlab config/database.yml
+  - RAILS_ENV=test bundle exec rake db:reset db:setup db:migrate
+script:
+  - bundle exec rspec
+  - bundle exec rubocop --config .rubocop.yml

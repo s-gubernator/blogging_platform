@@ -1,3 +1,6 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=ea98589730a9603817bf7e2e21b1e29722b9f8d3adb907b77595bf8727906ac1
 language: ruby
 cache:
   bundler: true
@@ -19,7 +22,12 @@ before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
   - RAILS_ENV=test bundle exec rake db:reset db:setup db:migrate
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - bundle exec rspec
   - bundle exec rubocop
-  - bundle exec brakeman
+  - bundle exec brakem
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

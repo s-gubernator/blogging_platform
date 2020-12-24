@@ -41,10 +41,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'test user without email' do
-    let(:user_without_email) { build(:user,
-                                     first_name: 'Test',
-                                     last_name: 'User',
-                                     email: nil) }
+    let(:user_without_email) { build(:user, first_name: 'Test', last_name: 'User', email: nil) }
 
     it 'set default email' do
       user_without_email.save
@@ -54,14 +51,12 @@ RSpec.describe User, type: :model do
   end
 
   describe '#full_name' do
-    let(:test_user) { create(:user,
-                              first_name: 'Test',
-                              last_name: 'User') }
+    let(:test_user) { create(:user, first_name: 'Test', last_name: 'User') }
+
     it { should respond_to(:full_name) }
 
     it 'collects Full Name from first_name and last_name' do
-      full_name = test_user.full_name
-      expect(full_name).to eq('Test User')
+      expect(test_user.full_name).to eq('Test User')
     end
   end
 end

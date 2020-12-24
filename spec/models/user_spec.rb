@@ -41,23 +41,27 @@ RSpec.describe User, type: :model do
   end
 
   describe 'test user without email' do
-    let(:user_without_email) { build(:user, email: nil) }
+    let(:user_without_email) { build(:user,
+                                     first_name: 'Test',
+                                     last_name: 'User',
+                                     email: nil) }
 
     it 'set default email' do
       user_without_email.save
       expect(user_without_email).to be_valid
-      expect(user_without_email.email).to eq(
-        "#{user_without_email.first_name}.#{user_without_email.last_name}@example.com".downcase.gsub(/['‘’]/, '_')
-      )
+      expect(user_without_email.email).to eq('test.user@example.com')
     end
   end
 
   describe '#full_name' do
+    let(:test_user) { create(:user,
+                              first_name: 'Test',
+                              last_name: 'User') }
     it { should respond_to(:full_name) }
 
     it 'collects Full Name from first_name and last_name' do
-      full_name = user.full_name
-      expect(full_name).to eq("#{user.first_name} #{user.last_name}")
+      full_name = test_user.full_name
+      expect(full_name).to eq('Test User')
     end
   end
 end

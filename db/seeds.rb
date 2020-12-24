@@ -1,9 +1,4 @@
-require 'factory_bot_rails'
-
 # Users
 User.destroy_all
-25.times do
-  FactoryBot.create(:user)
-end
-
+FactoryBot.create_list(:user, 25)
 p "Created #{User.count} users"

@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  - 2.7.2
+
+rspec:
+  script:
+    - bundle exec rails db:migrate RAILS_ENV=test
+    - bundle exec rspec
+
+rubocop:
+  script:
+    - bundle exec rubocop
+
+after_success:
+  - bundle exec codeclimate-test-reporter

@@ -28,6 +28,6 @@ before_script:
 script:
   - bundle exec rspec
   - bundle exec rubocop
-  - bundle exec brakem
+  - bundle exec brakeman
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

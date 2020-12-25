@@ -29,7 +29,5 @@ script:
   - bundle exec rspec
   - bundle exec rubocop
   - bundle exec brakeman
-after_success:
-  - bundle exec codeclimate-test-reporter
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

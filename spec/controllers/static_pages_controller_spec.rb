@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe StaticPagesController, type: :controller do
-
   describe 'GET /home' do
     it 'returns http success' do
       get :home
@@ -13,5 +14,4 @@ RSpec.describe StaticPagesController, type: :controller do
       expect(response).to render_template(:home)
     end
   end
-
 end

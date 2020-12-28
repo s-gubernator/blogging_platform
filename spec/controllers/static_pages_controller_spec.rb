@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe StaticPagesController, type: :controller do
-  describe 'GET /' do
+  describe 'GET /home' do
     render_views
 
     it 'returns http success' do

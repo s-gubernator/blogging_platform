@@ -1,1 +1,17 @@
-h3 Test for footer
+footer.page-footer.blue-grey.darken-1
+  .container
+    .row
+      .col.l6.s12
+        h5.white-text
+          = footer_title
+        p.grey-text.text-lighten-4
+          = footer_description
+  .footer-copyright
+    .container
+      small
+       | &copy;
+       = copyright_year_range(2020)
+       | &nbsp;&nbsp;&nbsp;
+       = link_to copyright_link_text, 'https://github.com/s-gubernator' , target: '_blank', rel: 'noopener'
+       | &nbsp;&nbsp;&nbsp;
+       = copyright_main_text

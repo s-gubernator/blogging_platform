@@ -1,4 +1,5 @@
 import "materialize-css/dist/js/materialize"
 import "core-js/stable"
 import "regenerator-runtime/runtime"
-import "../stylesheets/application"
+
+import "stylesheets/application"

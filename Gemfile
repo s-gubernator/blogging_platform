@@ -36,6 +36,7 @@ gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 
 gem 'annotate'
+gem 'materialize-sass'
 gem 'slim'
 gem 'strong_migrations'
 

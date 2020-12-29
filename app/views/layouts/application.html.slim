@@ -11,4 +11,7 @@ html
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
 
   body
-    = yield
+    = render 'layouts/header'
+    main
+      = yield
+    = render 'layouts/footer'

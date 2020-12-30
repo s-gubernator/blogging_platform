@@ -10,5 +10,8 @@ const imagePath = (name) => images(name, true)
 require("@rails/ujs").start()
 
 document.addEventListener('DOMContentLoaded', () => {
-   M.AutoInit();
- });
+  M.AutoInit();
+
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems, options);
+});

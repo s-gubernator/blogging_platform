@@ -3,10 +3,22 @@ nav.navbar-fixed.cyan.darken-4
     .nav-wrapper
       .left.brand-logo
         = link_to 'Logo', root_path
-      ul.right
+      ul.right.hide-on-med-and-down
         li
           = link_to 'Page 1', root_path
         li
           = link_to 'Page 2', root_path
         li
           = link_to 'Page 3', root_path
+
+ul#slide-out.sidenav
+  li
+    = link_to 'Page 1', root_path
+  li
+    = link_to 'Page 2', root_path
+  li
+    = link_to 'Page 3', root_path
+  li.divider
+
+a.sidenav-trigger data-target="slide-out" href="#"
+  i.material-icons menu

@@ -34,6 +34,7 @@ gem 'rubocop-rails', require: false
 gem 'rubocop-rspec', require: false
 
 gem 'annotate'
+gem 'devise'
 gem 'slim'
 gem 'strong_migrations'
 

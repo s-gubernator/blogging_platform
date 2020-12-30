@@ -6,7 +6,12 @@ html
     meta content="width=device-width,initial-scale=1" name="viewport" /
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = yield
+    = stylesheet_pack_tag 'application', media: 'all'
+    = javascript_pack_tag 'application'
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+
+  body.site-window
+    = render 'layouts/header'
+    main.site-main-content.container
+      = yield
+    = render 'layouts/footer'

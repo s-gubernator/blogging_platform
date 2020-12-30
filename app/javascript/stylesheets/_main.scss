@@ -1,0 +1,10 @@
+.site-window {
+  display: flex;
+  min-height: 600px;
+  flex-direction: column;
+  background-color: $light-cian;
+}
+
+.site-main-content {
+  flex: 1;
+}

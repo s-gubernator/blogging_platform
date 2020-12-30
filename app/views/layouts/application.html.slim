@@ -10,8 +10,8 @@ html
     = javascript_pack_tag 'application'
     link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
 
-  body.cyan.lighten-5
+  body.site-window
     = render 'layouts/header'
-    main.container
+    main.site-main-content.container
       = yield
     = render 'layouts/footer'

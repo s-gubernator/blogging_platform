@@ -3,11 +3,15 @@
 require 'spec_helper'
 
 RSpec.describe FooterHelper do
+  let(:current_year) { Time.zone.now.year }
+
   it 'returns only start year' do
-    expect(copyright_year_range(2020)).to eq('2020')
+    stub_const('ApplicationHelper::COPYRIGHT_START_YEAR', current_year)
+    expect(copyright_year_range).to eq(current_year.to_s)
   end
 
   it 'returns year range' do
-    expect(copyright_year_range(2017)).to eq("2017 - #{Time.zone.now.year}")
+    stub_const('ApplicationHelper::COPYRIGHT_START_YEAR', 2017)
+    expect(copyright_year_range).to eq("2017 - #{current_year}")
   end
 end

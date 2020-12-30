@@ -23,7 +23,7 @@ FactoryBot.define do
   factory :user do
     first_name { Faker::Name.unique.first_name }
     last_name { Faker::Name.unique.last_name }
-    password { 'test_password' } 
+    password { 'test_password' }
 
     after(:build) do |user|
       user.email ||= "#{user.first_name}.#{user.last_name}@example.com".downcase.gsub(/['‘’]/, '_')

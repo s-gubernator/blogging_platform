@@ -11,7 +11,4 @@ require("@rails/ujs").start()
 
 document.addEventListener('DOMContentLoaded', () => {
   M.AutoInit();
-
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems, options);
 });

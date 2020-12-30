@@ -3,15 +3,14 @@ footer.page-footer.cyan.darken-4
     .row
       .col.l6.s12
         h5.white-text
-          = footer_title
+          | Content for footer
         p.grey-text.text-lighten-4
-          = footer_description
+          | Footer for "Blogging Platform".
   .footer-copyright
     .container
       small
        | &copy;
-       = copyright_year_range(2020)
-       | &nbsp;&nbsp;&nbsp;
-       = link_to copyright_link_text, 'https://github.com/s-gubernator' , target: '_blank', rel: 'noopener'
-       | &nbsp;&nbsp;&nbsp;
-       = copyright_main_text
+       = copyright_year_range(ApplicationHelper::COPYRIGHT_START_YEAR)
+       = link_to 'Svitlana Gubernator', 'https://github.com/s-gubernator',\
+        target: '_blank', rel: 'noopener', class: 'dark-grey-link'
+       | All Rights Reserved

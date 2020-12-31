@@ -19,6 +19,11 @@ h2
         = " (#{@minimum_password_length} characters minimum)"
     br
     = f.password_field :password, autocomplete: "new-password"
+
+  .field
+    = f.label :password_confirmation
+    br
+    = f.password_field :password_confirmation, autocomplete: "new-password"
   .actions
-    = f.submit "Sign up"
+    = f.submit "Sign up", class: "btn waves-effect waves-light"
 = render "devise/shared/links"

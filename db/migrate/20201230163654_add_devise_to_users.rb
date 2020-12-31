@@ -2,7 +2,7 @@
 
 class AddDeviseToUsers < ActiveRecord::Migration[6.1]
   def self.up
-    safety_assured {
+    safety_assured do
       change_table :users do |t|
         ## Database authenticatable
         # t.string :email,              null: false, default: ""
@@ -37,7 +37,7 @@ class AddDeviseToUsers < ActiveRecord::Migration[6.1]
         # Uncomment below if timestamps were not included in your original model.
         # t.timestamps null: false
       end
-    }
+    end
 
     disable_ddl_transaction!
     def change

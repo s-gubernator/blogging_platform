@@ -10,11 +10,11 @@ h2
     br
     = f.password_field :password, autocomplete: "current-password"
   - if devise_mapping.rememberable?
-  .field.last-line
-    label
-      = f.check_box :remember_me, id: "remember_me"
-      span
-        | Remember me
+    .field.last-line
+      label
+        = f.check_box :remember_me, id: "remember_me"
+        span
+          | Remember me
   .actions.last-line
     = f.submit "Log in", class: "btn waves-effect waves-light"
 = render "devise/shared/links"

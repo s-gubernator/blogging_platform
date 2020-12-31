@@ -8,3 +8,11 @@
 .site-main-content {
   flex: 1;
 }
+
+#error_explanation {
+  color: $pale-violet-red;
+  
+  .error_message {
+    font-size: 1.2em;
+  }
+}

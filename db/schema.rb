@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_163654) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.index "lower((email)::text)", name: "index_users_on_lower_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

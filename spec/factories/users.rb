@@ -17,7 +17,8 @@
 #
 # Indexes
 #
-#  index_users_on_lower_email  (lower((email)::text)) UNIQUE
+#  index_users_on_lower_email           (lower((email)::text)) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 FactoryBot.define do
   factory :user do

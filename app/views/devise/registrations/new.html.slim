@@ -24,6 +24,6 @@ h2
     = f.label :password_confirmation
     br
     = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
+  .actions.last-line
     = f.submit "Sign up", class: "btn waves-effect waves-light"
 = render "devise/shared/links"

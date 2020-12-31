@@ -11,8 +11,12 @@
 
 #error_explanation {
   color: $pale-violet-red;
-  
+
   .error_message {
     font-size: 1.2em;
   }
+}
+
+.last-line {
+  padding-bottom: 20px;
 }

@@ -11,7 +11,7 @@
 
 .error {
   color: $pale-violet-red;
-  
+
   .error_message {
     font-size: 1.2em;
   }
@@ -19,4 +19,12 @@
 
 .last-line {
   padding-bottom: 20px;
+}
+
+/* Remove input background colour for Chrome autocomplete */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+    -webkit-box-shadow: 0 0 0 30px $light-cian inset !important;
 }

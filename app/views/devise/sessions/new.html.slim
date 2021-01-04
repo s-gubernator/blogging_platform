@@ -1,22 +1,22 @@
-h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  - if flash[:alert].present?
-    .error
-      = flash[:alert]
-  .field
-    = f.label :email
-    br
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    br
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field.last-line
-      label
-        = f.check_box :remember_me, id: "remember_me"
-        span Remember me
-  .actions.last-line
-    = f.submit "Log in", class: "btn waves-effect waves-light"
-
-= render "devise/shared/links"
+center
+  h4.form-title Log in
+  .container.form-card.z-depth-1.col.s12
+    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+      - if flash[:alert].present?
+        .error
+          = flash[:alert]
+      .input
+        = f.label :email, class: "left"
+        br
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .input
+        = f.label :password, class: "left"
+        = f.password_field :password, autocomplete: "current-password"
+      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
+        = link_to "Forgot your password?", new_password_path(resource_name), class: "pink-text right"
+      - if devise_mapping.rememberable?
+        label.left
+          = f.check_box :remember_me, id: "remember_me"
+          span Remember me
+      .action
+        = f.submit "Log in", class: "btn btm-large waves-effect"

@@ -11,14 +11,41 @@
 
 .error {
   color: $pale-violet-red;
+  text-align: left;
 
   .error_message {
     font-size: 1.2em;
   }
+
+  ul:not(.browser-default) > li {
+    list-style-type: square;
+  }
 }
 
-.last-line {
-  padding-bottom: 1.25em;
+.form-title {
+  margin: 1.5em 0 0.75em;
+}
+
+.form-card {
+  display: inline-block;
+  margin-bottom: 2em;
+  padding: 1.5em 2em;
+  border: 0.1em solid $light-grey;
+  background-color: $white;
+
+  .pink-text {
+    color: $pale-violet-red;
+    font-size: 0.8em;
+  }
+
+  .btn {
+    margin-top: 2em;
+    width: 100%;
+  }
+}
+
+.bottom-space {
+  margin-bottom: 2em;
 }
 
 /* Remove input background colour for Chrome autocomplete */

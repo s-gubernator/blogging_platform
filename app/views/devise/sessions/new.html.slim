@@ -1,5 +1,4 @@
-h2
-  | Log in
+h2 Log in
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   - if flash[:alert].present?
     .error
@@ -16,8 +15,7 @@ h2
     .field.last-line
       label
         = f.check_box :remember_me, id: "remember_me"
-        span
-          | Remember me
+        span Remember me
   .actions.last-line
     = f.submit "Log in", class: "btn waves-effect waves-light"
 = render "devise/shared/links"

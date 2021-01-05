@@ -7,5 +7,5 @@ FactoryBot.create_list(:user, 5, :admin)
 
 p '...Finish users generating'
 p "Created #{User.count} users"
-p "Created #{User.where(role: 'admin').count} admins"
-p "Created #{User.where(role: 'simple').count} simple users"
+p "Created #{User.having_role(:admin).count} admins"
+p "Created #{User.having_role(:simple).count} simple users"

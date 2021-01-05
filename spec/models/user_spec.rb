@@ -73,6 +73,9 @@ RSpec.describe User, type: :model do
     let(:simple_user) { create(:user) }
     let(:admin_user) { create(:user, :admin) }
 
+    it { should enumerize(:role).in(:simple, :admin).with_default(:simple) }
+    it { should enumerize(:role).in(:simple, :admin).with_scope(scope: :having_role) }
+
     it 'sets simple user role "simple"' do
       expect(simple_user.role).to eq('simple')
     end

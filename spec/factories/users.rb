@@ -27,6 +27,10 @@ FactoryBot.define do
     last_name { Faker::Name.unique.last_name }
     password { Faker::Internet.password }
 
+    trait :admin do
+      role { 'admin' }
+    end
+
     after(:build) do |user|
       user.email ||= "#{user.first_name}.#{user.last_name}@example.com".downcase.gsub(/['‘’]/, '_')
     end

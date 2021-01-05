@@ -1,1 +1,4 @@
-h1 Hello in "Blogging Platform"
+- if current_user
+  h1= "Hello, #{current_user.full_name}"
+- else
+  h1 Hello in "Blogging Platform"

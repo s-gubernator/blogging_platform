@@ -35,6 +35,7 @@ gem 'rubocop-rspec', require: false
 
 gem 'annotate'
 gem 'devise'
+gem 'enumerize'
 gem 'slim'
 gem 'strong_migrations'
 

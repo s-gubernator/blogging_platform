@@ -23,9 +23,15 @@ RSpec.describe Administration::DashboardController, type: :controller do
     context 'when user with role "simple" is logged' do
       login_simple
 
-      it 'returns http success' do
+      it 'returns http unauthorized' do
         get :home
         expect(response).to have_http_status(:unauthorized)
+      end
+
+      it 'returns json error message' do
+        get :home
+        body = JSON.parse(response.body)
+        expect(body['message']).to eq('Access denied')
       end
     end
   end

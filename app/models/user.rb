@@ -24,7 +24,9 @@
 class User < ApplicationRecord
   extend Enumerize
 
-  enumerize :role, in: %i[simple admin], default: :simple, scope: :having_role
+  enumerize :role, in: %i[simple admin], default: :simple,
+                                         scope: :having_role,
+                                         predicates: { prefix: true }
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }

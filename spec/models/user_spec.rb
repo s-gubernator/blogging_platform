@@ -45,7 +45,7 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_length_of(:email).is_at_most(255) }
     it { is_expected.to validate_uniqueness_of(:email).ignoring_case_sensitivity }
-    it { (user.email).should match(URI::MailTo::EMAIL_REGEXP) }
+    it { expect(user.email).to match(URI::MailTo::EMAIL_REGEXP) }
   end
 
   describe 'test user without email' do
@@ -73,7 +73,12 @@ RSpec.describe User, type: :model do
     let(:simple_user) { create(:user) }
     let(:admin_user) { create(:user, :admin) }
 
-    it { is_expected.to enumerize(:role).in(:simple, :admin).with_default(:simple).with_scope(scope: :having_role) }
+    it 'verifies enumerize settings' do
+      is_expected.to enumerize(:role).in(:simple, :admin)
+       .with_default(:simple)
+       .with_scope(scope: :having_role)
+       .with_predicates(prefix: true)
+    end
 
     it 'sets simple user role "simple"' do
       expect(simple_user.role).to eq('simple')

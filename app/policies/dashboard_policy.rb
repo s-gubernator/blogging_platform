@@ -2,7 +2,6 @@
 
 class DashboardPolicy < ApplicationPolicy
   def admin?
-    #binding.pry
-    user.role_admin?
+    user.present? && user.role_admin?
   end
 end

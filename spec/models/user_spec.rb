@@ -12,6 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  role                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -65,6 +66,21 @@ RSpec.describe User, type: :model do
 
     it 'collects Full Name from first_name and last_name' do
       expect(test_user.full_name).to eq('Test User')
+    end
+  end
+
+  describe 'check user role' do
+    let(:simple_user) { create(:user) }
+    let(:admin_user) { create(:user, :admin) }
+
+    it { is_expected.to enumerize(:role).in(:simple, :admin).with_default(:simple).with_scope(scope: :having_role) }
+
+    it 'sets simple user role "simple"' do
+      expect(simple_user.role).to eq('simple')
+    end
+
+    it 'sets admin user role "admin"' do
+      expect(admin_user.role).to eq('admin')
     end
   end
 end

@@ -12,6 +12,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  role                   :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
@@ -25,6 +26,10 @@ FactoryBot.define do
     first_name { Faker::Name.unique.first_name }
     last_name { Faker::Name.unique.last_name }
     password { Faker::Internet.password }
+
+    trait :admin do
+      role { 'admin' }
+    end
 
     after(:build) do |user|
       user.email ||= "#{user.first_name}.#{user.last_name}@example.com".downcase.gsub(/['‘’]/, '_')

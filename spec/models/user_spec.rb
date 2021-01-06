@@ -70,14 +70,16 @@ RSpec.describe User, type: :model do
   end
 
   describe 'check user role' do
+    subject { user }
+
     let(:simple_user) { create(:user) }
     let(:admin_user) { create(:user, :admin) }
 
     it 'verifies enumerize settings' do
-      is_expected.to enumerize(:role).in(:simple, :admin)
-       .with_default(:simple)
-       .with_scope(scope: :having_role)
-       .with_predicates(prefix: true)
+      expect(user).to enumerize(:role).in(:simple, :admin)
+                                      .with_default(:simple)
+                                      .with_scope(scope: :having_role)
+                                      .with_predicates(prefix: true)
     end
 
     it 'sets simple user role "simple"' do
@@ -89,6 +91,6 @@ RSpec.describe User, type: :model do
     end
 
     it { expect(admin_user.role_admin?).to be true }
-    it { expect(simple_user.role_admin?).to be false}
+    it { expect(simple_user.role_admin?).to be false }
   end
 end

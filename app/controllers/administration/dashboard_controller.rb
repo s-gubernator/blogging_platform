@@ -2,6 +2,10 @@
 
 module Administration
   class DashboardController < ApplicationController
-    def home; end
+    after_action :verify_authorized
+
+    def home
+      authorize :dashboard, :admin?
+    end
   end
 end

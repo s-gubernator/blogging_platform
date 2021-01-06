@@ -87,5 +87,8 @@ RSpec.describe User, type: :model do
     it 'sets admin user role "admin"' do
       expect(admin_user.role).to eq('admin')
     end
+
+    it { expect(admin_user.role_admin?).to be true }
+    it { expect(simple_user.role_admin?).to be false}
   end
 end

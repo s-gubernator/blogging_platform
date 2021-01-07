@@ -5,7 +5,7 @@ module Administration
     after_action :verify_authorized
 
     def home
-      authorize :dashboard, :admin?
+      authorize :dashboard, :home?
     end
   end
 end

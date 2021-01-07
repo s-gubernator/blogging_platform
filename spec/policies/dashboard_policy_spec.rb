@@ -8,7 +8,7 @@ describe DashboardPolicy do
   let(:simple_user) { build(:user) }
   let(:admin_user) { build(:user, :admin) }
 
-  permissions :admin? do
+  permissions :home? do
     it 'denies access for simple user' do
       expect(dashboard_policy).not_to permit(simple_user)
     end

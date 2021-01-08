@@ -2,6 +2,8 @@
 
 module Administration
   class DashboardController < ApplicationController
-    def home; end
+    def home
+      authorize :dashboard, :home?
+    end
   end
 end

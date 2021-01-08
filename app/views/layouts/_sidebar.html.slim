@@ -1,5 +1,7 @@
 ul#slide-out.sidenav
   - if current_user
+    - if policy(:dashboard).home?
+      li= link_to "Admin Area", administration_root_path
     li= link_to "Sign Out", destroy_user_session_path, method: :delete
   - else
     li= link_to "Log In", new_user_session_path

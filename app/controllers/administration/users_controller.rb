@@ -25,7 +25,7 @@ module Administration
       end
     end
 
-     def update
+    def update
       if @user.update(user_params)
         redirect_to administration_user_path(@user), notice: 'User was successfully updated.'
       else

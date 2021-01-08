@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   before_action :configure_permitted_parameters, if: :devise_controller?
+  after_action :verify_authorized, unless: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError, with: :deny_access
 

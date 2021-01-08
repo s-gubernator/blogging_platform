@@ -24,7 +24,8 @@
 class User < ApplicationRecord
   extend Enumerize
 
-  enumerize :role, in: %i[simple admin], default: :simple,
+  enumerize :role, in: %i[simple admin],
+                   default: :simple,
                    scope: :having_role,
                    predicates: { prefix: true }
 

@@ -1,12 +1,13 @@
-= form_for  new_user_registration_path do |form|
-  - if administration_user.errors.any?
-    #error_explanation
-      h2
-        = pluralize(administration_user.errors.count, "error")
-        |  prohibited this administration_user from being saved:
-      ul
-        - administration_user.errors.each do |error|
-          li
-            = error.full_message
+= form_for new_administration_user_path do |f|
+  = render "shared/error_messages", object: @user
+  .input
+    = f.label :first_name, class: "left"
+    = f.text_field :first_name, autofocus: true
+  .input
+    = f.label :last_name, class: "left"
+    = f.text_field :last_name, autofocus: true
+  .input
+    = f.label :email, class: "left"
+    = f.email_field :email, autofocus: true, autocomplete: "email"
   .actions
-    = form.submit
+    = f.submit "Create new user", class: "btn btm-large waves-effect"

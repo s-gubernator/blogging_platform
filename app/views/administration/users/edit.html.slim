@@ -1,6 +1,6 @@
-h1
-  | Editing Administration User
-/= render 'form', administration_user: @user
-= link_to 'Show', administration_users_path(@user)
-|  |
-= link_to 'Back', administration_users_path
+center
+  h4.form-title= "Edit data for #{@user.full_name}"
+  = render 'edit_form'
+  = link_to 'Show', administration_user_path(@user)
+  |  |
+  = link_to 'Back', administration_users_path

@@ -1,6 +1,6 @@
 h1
   | Editing Administration User
-= render 'form', administration_user: @administration_user
-= link_to 'Show', @administration_user
-|  | 
+/= render 'form', administration_user: @administration_user
+= link_to 'Show', administration_users_path(@administration_user)
+|  |
 = link_to 'Back', administration_users_path

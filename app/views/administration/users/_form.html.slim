@@ -1,4 +1,4 @@
-= form_with(model: administration_user) do |form|
+= form_for  new_user_registration_path do |form|
   - if administration_user.errors.any?
     #error_explanation
       h2

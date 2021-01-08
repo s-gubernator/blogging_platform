@@ -1,19 +1,20 @@
 p#notice
   = notice
-h1
-  | Administration Users
+h1 Users
 table
   thead
     tr
       th[colspan="3"]
   tbody
-    - @administration_users.each do |administration_user|
+    - @administration_users.each do |user|
       tr
         td
-          = link_to 'Show', administration_user
+          = user.full_name
         td
-          = link_to 'Edit', edit_administration_user_path(administration_user)
+          = link_to 'Show', administration_user_path(user)
         td
-          = link_to 'Destroy', administration_user, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Edit', edit_administration_user_path(user)
+        td
+          = link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
 br
-= link_to 'New Administration User', new_administration_user_path
+= link_to 'New User', new_administration_user_path

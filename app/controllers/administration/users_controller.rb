@@ -4,7 +4,7 @@ class Administration::UsersController < ApplicationController
   # GET /administration/users
   # GET /administration/users.json
   def index
-    @administration_users = Administration::User.all
+    @administration_users = User.all
   end
 
   # GET /administration/users/1
@@ -14,7 +14,7 @@ class Administration::UsersController < ApplicationController
 
   # GET /administration/users/new
   def new
-    @administration_user = Administration::User.new
+    @administration_user = User.new
   end
 
   # GET /administration/users/1/edit
@@ -24,7 +24,7 @@ class Administration::UsersController < ApplicationController
   # POST /administration/users
   # POST /administration/users.json
   def create
-    @administration_user = Administration::User.new(administration_user_params)
+    @administration_user = User.new(administration_user_params)
 
     respond_to do |format|
       if @administration_user.save
@@ -64,7 +64,7 @@ class Administration::UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_administration_user
-      @administration_user = Administration::User.find(params[:id])
+      @administration_user = User.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

@@ -13,8 +13,6 @@
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/administration/users", type: :request do
-  # Administration::User. As you add validations to Administration::User, be sure to
-  # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
   }
@@ -25,7 +23,7 @@ RSpec.describe "/administration/users", type: :request do
 
   describe "GET /index" do
     it "renders a successful response" do
-      Administration::User.create! valid_attributes
+      User.create! valid_attributes
       get administration_users_url
       expect(response).to be_successful
     end
@@ -33,7 +31,7 @@ RSpec.describe "/administration/users", type: :request do
 
   describe "GET /show" do
     it "renders a successful response" do
-      user = Administration::User.create! valid_attributes
+      user = User.create! valid_attributes
       get administration_user_url(administration_user)
       expect(response).to be_successful
     end
@@ -48,7 +46,7 @@ RSpec.describe "/administration/users", type: :request do
 
   describe "GET /edit" do
     it "render a successful response" do
-      user = Administration::User.create! valid_attributes
+      user = User.create! valid_attributes
       get edit_administration_user_url(administration_user)
       expect(response).to be_successful
     end
@@ -56,10 +54,10 @@ RSpec.describe "/administration/users", type: :request do
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Administration::User" do
+      it "creates a new User" do
         expect {
           post administration_users_url, params: { administration_user: valid_attributes }
-        }.to change(Administration::User, :count).by(1)
+        }.to change(User, :count).by(1)
       end
 
       it "redirects to the created administration_user" do
@@ -69,10 +67,10 @@ RSpec.describe "/administration/users", type: :request do
     end
 
     context "with invalid parameters" do
-      it "does not create a new Administration::User" do
+      it "does not create a new User" do
         expect {
           post administration_users_url, params: { administration_user: invalid_attributes }
-        }.to change(Administration::User, :count).by(0)
+        }.to change(User, :count).by(0)
       end
 
       it "renders a successful response (i.e. to display the 'new' template)" do
@@ -89,14 +87,14 @@ RSpec.describe "/administration/users", type: :request do
       }
 
       it "updates the requested administration_user" do
-        user = Administration::User.create! valid_attributes
+        user = User.create! valid_attributes
         patch administration_user_url(administration_user), params: { administration_user: new_attributes }
         user.reload
         skip("Add assertions for updated state")
       end
 
       it "redirects to the administration_user" do
-        user = Administration::User.create! valid_attributes
+        user = User.create! valid_attributes
         patch administration_user_url(administration_user), params: { administration_user: new_attributes }
         user.reload
         expect(response).to redirect_to(administration_user_url(user))
@@ -105,7 +103,7 @@ RSpec.describe "/administration/users", type: :request do
 
     context "with invalid parameters" do
       it "renders a successful response (i.e. to display the 'edit' template)" do
-        user = Administration::User.create! valid_attributes
+        user = User.create! valid_attributes
         patch administration_user_url(administration_user), params: { administration_user: invalid_attributes }
         expect(response).to be_successful
       end
@@ -114,14 +112,14 @@ RSpec.describe "/administration/users", type: :request do
 
   describe "DELETE /destroy" do
     it "destroys the requested administration_user" do
-      user = Administration::User.create! valid_attributes
+      user = User.create! valid_attributes
       expect {
         delete administration_user_url(administration_user)
-      }.to change(Administration::User, :count).by(-1)
+      }.to change(User, :count).by(-1)
     end
 
     it "redirects to the administration_users list" do
-      user = Administration::User.create! valid_attributes
+      user = User.create! valid_attributes
       delete administration_user_url(administration_user)
       expect(response).to redirect_to(administration_users_url)
     end

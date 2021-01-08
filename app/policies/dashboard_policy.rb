@@ -2,6 +2,6 @@
 
 class DashboardPolicy < ApplicationPolicy
   def home?
-    user.present? && user.role_admin?
+    user&.role_admin?
   end
 end

@@ -8,13 +8,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :deny_access
 
-  rescue_from Exception, with: :internal_server_error
-
-  rescue_from ActionController::RoutingError,
-              ::AbstractController::ActionNotFound,
-              ActiveRecord::RecordNotFound,
-               with: :not_found
-
   protected
 
   def configure_permitted_parameters
@@ -24,9 +17,5 @@ class ApplicationController < ActionController::Base
 
   def deny_access
     render template: 'errors/unauthorized', status: :unauthorized
-  end
-
-  def not_found
-    render template: 'errors/not_found', status: :not_found
   end
 end

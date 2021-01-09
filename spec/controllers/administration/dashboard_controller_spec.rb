@@ -3,9 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Administration::DashboardController, type: :controller do
-  describe 'GET /home' do
-    render_views
+  render_views
 
+  describe 'GET /home' do
     context 'when unregistered visitor open link /administration' do
       it 'returns http unauthorized' do
         get :home

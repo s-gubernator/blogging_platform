@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
   def deny_access
-    render json: { message: 'Access denied' }, status: :unauthorized
+    render template: 'errors/unauthorized', status: :unauthorized
   end
 end

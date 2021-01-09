@@ -14,8 +14,7 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
       it 'returns json error message' do
         get :home
-        body = JSON.parse(response.body)
-        expect(body['message']).to eq('Access denied')
+        expect(response).to render_template('errors/unauthorized')
       end
     end
 
@@ -43,8 +42,7 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
       it 'returns json error message' do
         get :home
-        body = JSON.parse(response.body)
-        expect(body['message']).to eq('Access denied')
+        expect(response).to render_template('errors/unauthorized')
       end
     end
   end

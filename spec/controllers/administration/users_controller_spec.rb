@@ -9,37 +9,93 @@ RSpec.describe Administration::UsersController, type: :controller do
   let(:invalid_user) { build(:user, first_name: '', last_name: '') }
 
   describe 'GET /index' do
-    it 'renders a successful response' do
-      get :index
-      expect(response).to be_successful
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'renders a successful response' do
+        get :index
+        expect(response).to be_successful
+      end
+    end
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns http unauthorized' do
+        get :index
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 
   describe 'GET /show' do
-    it 'renders a successful response' do
-      valid_user.save
-      get :show, params: { id: valid_user.id }
-      expect(response).to be_successful
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'renders a successful response' do
+        valid_user.save
+        get :show, params: { id: valid_user.id }
+        expect(response).to be_successful
+      end
+    end
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns http unauthorized' do
+        valid_user.save
+        get :show, params: { id: valid_user.id }
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 
   describe 'GET /new' do
-    it 'renders a successful response' do
-      get :new
-      expect(response).to be_successful
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'renders a successful response' do
+        get :new
+        expect(response).to be_successful
+      end
+    end
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns http unauthorized' do
+        get :new
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 
   describe 'GET /edit' do
-    it 'render a successful response' do
-      valid_user.save
-      get :edit, params: { id: valid_user.id }
-      expect(response).to be_successful
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'render a successful response' do
+        valid_user.save
+        get :edit, params: { id: valid_user.id }
+        expect(response).to be_successful
+      end
+    end
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns http unauthorized' do
+        valid_user.save
+        get :edit, params: { id: valid_user.id }
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 
   describe 'POST /create' do
-    context 'with valid parameters' do
+    context 'when admin creates a user with valid parameters' do
+      login_admin
+
       let(:valid_attr) { { first_name: 'Test', last_name: 'User', email: 'test.user@example.com' } }
 
       it 'creates a new user' do
@@ -54,7 +110,9 @@ RSpec.describe Administration::UsersController, type: :controller do
       end
     end
 
-    context 'with invalid parameters' do
+    context 'when admin creates a user with invalid parameters' do
+      login_admin
+
       let(:invalid_attr) { { first_name: '', last_name: '' } }
 
       it 'does not create a new user' do
@@ -68,10 +126,21 @@ RSpec.describe Administration::UsersController, type: :controller do
         expect(response).to be_successful
       end
     end
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns http unauthorized' do
+        post :create, params: { user: { first_name: 'Test', last_name: 'User' } }
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
   end
 
   describe 'PATCH /update' do
-    context 'with valid parameters' do
+    context 'when admin creates a user with valid parameters' do
+      login_admin
+
       let(:new_attributes) { { first_name: 'New', last_name: 'User', email: 'new.user@example.com' } }
 
       it 'updates the requested user' do
@@ -89,7 +158,9 @@ RSpec.describe Administration::UsersController, type: :controller do
       end
     end
 
-    context 'with invalid parameters' do
+    context 'when admin creates a user with invalid parameters' do
+      login_admin
+
       let(:invalid_attr) { { first_name: '', last_name: '', email: '' } }
 
       it "renders a successful response (i.e. to display the 'edit' template)" do
@@ -98,20 +169,43 @@ RSpec.describe Administration::UsersController, type: :controller do
         expect(response).to be_successful
       end
     end
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns http unauthorized' do
+        valid_user.save
+        patch :update, params: { id: valid_user.id, user: { first_name: 'New', last_name: 'User' } }
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
   end
 
   describe 'DELETE /destroy' do
-    it 'destroys the requested administration_user' do
-      valid_user.save
-      expect do
+    context 'when user with role "admin" is logged' do
+      login_admin
+      it 'destroys the requested administration_user' do
+        valid_user.save
+        expect do
+          delete :destroy, params: { id: valid_user.id }
+        end.to change(User, :count).by(-1)
+      end
+
+      it 'redirects to the administration_users list' do
+        valid_user.save
         delete :destroy, params: { id: valid_user.id }
-      end.to change(User, :count).by(-1)
+        expect(response).to redirect_to(administration_users_url)
+      end
     end
 
-    it 'redirects to the administration_users list' do
-      valid_user.save
-      delete :destroy, params: { id: valid_user.id }
-      expect(response).to redirect_to(administration_users_url)
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns http unauthorized' do
+        valid_user.save
+        delete :destroy, params: { id: valid_user.id }
+        expect(response).to have_http_status(:unauthorized)
+      end
     end
   end
 end

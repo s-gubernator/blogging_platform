@@ -1,4 +1,17 @@
 center
   h4.form-title Create user
-  = render 'new_form'
+  .container.form-card.z-depth-1.col.s12
+    = form_for(:user, url: administration_users_path) do |f|
+      = render "shared/error_messages", object: @user
+      .input
+        = f.label :first_name, class: "left"
+        = f.text_field :first_name, autofocus: true
+      .input
+        = f.label :last_name, class: "left"
+        = f.text_field :last_name, autofocus: true
+      .input
+        = f.label :email, class: "left"
+        = f.email_field :email, autofocus: true, autocomplete: "email"
+      .actions
+        = f.submit "Submit", class: "btn btm-large waves-effect"
   = link_to 'Back', administration_users_path

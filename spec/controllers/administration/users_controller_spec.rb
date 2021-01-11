@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Administration::UsersController, type: :controller do
   render_views
 
-  let(:user) { build(:user) }
+  let!(:user) { create(:user) }
 
   describe 'GET /index' do
     context 'when user with role "admin" is logged' do
@@ -31,15 +31,13 @@ RSpec.describe Administration::UsersController, type: :controller do
     context 'when user with role "admin" is logged' do
       login_admin
 
-      it 'destroys the requested administration_user' do
-        user.save
+      it 'destroys the requested user' do
         expect do
           delete :destroy, params: { id: user.id }
         end.to change(User, :count).by(-1)
       end
 
-      it 'redirects to the administration_users list' do
-        user.save
+      it 'redirects to the users list' do
         delete :destroy, params: { id: user.id }
         expect(response).to redirect_to(administration_users_url)
       end
@@ -49,7 +47,6 @@ RSpec.describe Administration::UsersController, type: :controller do
       login_simple
 
       it 'returns http unauthorized' do
-        user.save
         delete :destroy, params: { id: user.id }
         expect(response).to have_http_status(:unauthorized)
       end

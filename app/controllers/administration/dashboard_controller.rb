@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Administration
-  class DashboardController < ApplicationController
+  class DashboardController < Administration::BaseController
     def home
       authorize :dashboard, :home?
     end

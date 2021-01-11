@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Administration
-  class UsersController < ApplicationController
+  class UsersController < Administration::BaseController
     before_action :set_user, only: %i[destroy]
 
     def index

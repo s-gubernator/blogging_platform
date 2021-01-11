@@ -1,0 +1,36 @@
+.site-window {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: $light-cian;
+}
+
+.admin-main-content {
+  flex: 1;
+  padding-left: 20em;
+}
+
+.admin-side-nav {
+  position: fixed;
+  top: 0em;
+  left: 0em;
+  bottom: 0em;
+  overflow: auto;
+  background: $slategray;
+  padding-top: 5em;
+}
+
+.admin-side-nav a {
+  padding: 0.5em 3em;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: $white;
+}
+
+.admin-side-nav a:hover {
+  color: $light-cian;
+}
+
+.page-footer {
+  position: relative;
+}

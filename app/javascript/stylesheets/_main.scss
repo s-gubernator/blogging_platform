@@ -37,7 +37,8 @@
   .btn {
     margin-top: 2em;
     width: 100%;
-    text-transform: capitalize;
+    font-size: 1.2em;
+    text-transform: none;
   }
 }
 
@@ -85,3 +86,9 @@ a.link-as-button:hover {
   font-weight: bold;
   padding-right: 1em;
 }
+
+// #toast-container {
+//   position: fixed !important;
+//   bottom: 0px !important;
+//   left: 0px !important;
+// }

@@ -10,6 +10,7 @@ table.striped
       th Id
       th Full name
       th Email
+      th Role
       th
   tbody
     - @users.each do |user|
@@ -17,4 +18,5 @@ table.striped
         td= user.id
         td= user.full_name
         td= user.email
+        td= user.role
         td= link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'

@@ -1,3 +1,5 @@
+= link_to 'Go to Dashboard', administration_root_path
+
 - if notice.present?
   #notice.default-card.notice
     = notice
@@ -11,5 +13,7 @@ table.striped
       tr
         td
           = user.full_name
+        td
+          = user.email
         td
           = link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'

@@ -5,12 +5,12 @@ module Administration
     before_action :set_user, only: %i[destroy]
 
     def index
-      authorize :users
+      authorize User
       @users = User.all
     end
 
     def destroy
-      authorize :users
+      authorize @user
       @user.destroy
       redirect_to administration_users_url, notice: 'User was successfully destroyed.'
     end

@@ -5,10 +5,6 @@ class UsersPolicy < ApplicationPolicy
     user&.role_admin?
   end
 
-  def show?
-    user&.role_admin?
-  end
-
   def destroy?
     user&.role_admin?
   end

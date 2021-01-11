@@ -8,7 +8,7 @@ describe UsersPolicy do
   let(:simple_user) { build(:user) }
   let(:admin_user) { build(:user, :admin) }
 
-  permissions :index?, :show?, :destroy? do
+  permissions :index?, :destroy? do
     it 'denies access for visitor' do
       expect(users_policy).not_to permit(nil)
     end

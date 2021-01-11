@@ -27,28 +27,6 @@ RSpec.describe Administration::UsersController, type: :controller do
     end
   end
 
-  describe 'GET /show' do
-    context 'when user with role "admin" is logged' do
-      login_admin
-
-      it 'renders a successful response' do
-        user.save
-        get :show, params: { id: user.id }
-        expect(response).to be_successful
-      end
-    end
-
-    context 'when user with role "simple" is logged' do
-      login_simple
-
-      it 'returns http unauthorized' do
-        user.save
-        get :show, params: { id: user.id }
-        expect(response).to have_http_status(:unauthorized)
-      end
-    end
-  end
-
   describe 'DELETE /destroy' do
     context 'when user with role "admin" is logged' do
       login_admin

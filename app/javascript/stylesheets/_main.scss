@@ -64,11 +64,6 @@ table.striped > tbody > tr:nth-child(odd) {
   border-radius: 0.4em;
 }
 
-.bigger_button {
-  font-size: 1.2em;
-  padding: 0.5em 1.5em;
-}
-
 a.link-as-button:hover {
   background-color: $dark-cian;
 }
@@ -82,9 +77,4 @@ a.link-as-button:hover {
 
 .notice {
   background-color: $cosmic-latte;
-}
-
-.list-item-title {
-  font-weight: bold;
-  padding-right: 1em;
 }

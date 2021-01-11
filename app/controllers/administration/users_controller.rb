@@ -2,15 +2,11 @@
 
 module Administration
   class UsersController < ApplicationController
-    before_action :set_user, only: %i[show destroy]
+    before_action :set_user, only: %i[destroy]
 
     def index
       authorize :users
       @users = User.all
-    end
-
-    def show
-      authorize :users
     end
 
     def destroy

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   namespace :administration do
     root 'dashboard#home'
 
-    resources :users
+    resources :users, only: %i[index show destroy]
   end
 end

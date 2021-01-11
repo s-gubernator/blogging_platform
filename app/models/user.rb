@@ -43,8 +43,4 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
-
-  def password_required?
-    false
-  end
 end

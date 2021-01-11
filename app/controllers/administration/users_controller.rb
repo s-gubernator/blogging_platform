@@ -22,11 +22,6 @@ module Administration
       @user = User.find(params[:id])
     end
 
-    def user_params
-      params.require(:user)
-            .permit(:first_name, :last_name, :email)
-    end
-
     def check_policy
       authorize :users, :admin?
     end

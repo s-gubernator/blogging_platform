@@ -1,7 +1,15 @@
 # frozen_string_literal: true
 
 class UsersPolicy < ApplicationPolicy
-  def admin?
+  def index?
+    user&.role_admin?
+  end
+
+  def show?
+    user&.role_admin?
+  end
+
+  def destroy?
     user&.role_admin?
   end
 end

@@ -1,19 +1,20 @@
 = link_to 'Go to Dashboard', administration_root_path
 
 - if notice.present?
-  #notice.default-card.notice
-    = notice
-h3.center All users
+  #notice.default-card.notice= notice
+
+h4.center All users
 table.striped
   thead
     tr
-      th[colspan="3"]
+      th Id
+      th Full name
+      th Email
+      th
   tbody
     - @users.each do |user|
       tr
-        td
-          = user.full_name
-        td
-          = user.email
-        td
-          = link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
+        td= user.id
+        td= user.full_name
+        td= user.email
+        td= link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'

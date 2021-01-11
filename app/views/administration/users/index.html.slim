@@ -12,6 +12,4 @@ table.striped
         td
           = user.full_name
         td
-          = link_to 'Show', administration_user_path(user), class: 'link-as-button'
-        td
           = link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'

@@ -1,7 +1,8 @@
-p#notice
-  = notice
+- if notice.present?
+  #notice.default-card.notice
+    = notice
 h1 All users
-table
+table.striped
   thead
     tr
       th[colspan="3"]
@@ -11,6 +12,6 @@ table
         td
           = user.full_name
         td
-          = link_to 'Show', administration_user_path(user)
+          = link_to 'Show', administration_user_path(user), class: 'link-as-button'
         td
-          = link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'

@@ -1,6 +1,6 @@
 center
   h4.form-title Change your password
-  .container.form-card.z-depth-1.col.s12
+  .container.default-card.form-card.z-depth-1
     = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
       = render "shared/error_messages", object: resource
       = f.hidden_field :reset_password_token

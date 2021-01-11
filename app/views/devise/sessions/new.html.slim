@@ -1,6 +1,6 @@
 center
   h4.form-title Log in
-  .container.form-card.z-depth-1.col.s12
+  .container.default-card.form-card.z-depth-1
     = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       - if flash[:alert].present?
         .error

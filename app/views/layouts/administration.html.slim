@@ -2,7 +2,8 @@ doctype html
 html
   head
     meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
-    title Admin area
+    title
+      = yield :title
     meta content="width=device-width,initial-scale=1" name="viewport"
     = csrf_meta_tags
     = csp_meta_tag
@@ -16,6 +17,7 @@ html
       .row
         .col.s4.m3.l2
           = render 'layouts/administration/side_navbar'
-        .col.s8.m9.l10
+        .col.s8.m9.l102
+          = render_navigation
           = yield
     = render 'layouts/administration/footer'

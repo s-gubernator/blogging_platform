@@ -1,22 +1,25 @@
-= link_to 'Go to Dashboard', administration_root_path
+.container
+  .nav.admin-breadcrumb
+    .nav-wrapper
+      = link_to 'Dashboard', administration_root_path, class: 'breadcrumb'
+      = link_to 'All users', administration_users_path, class: 'breadcrumb'
 
-- if notice.present?
-  #notice.default-card.notice= notice
+  - if notice.present?
+    #notice.default-card.notice= notice
 
-h4.center All users
-table.striped
-  thead
-    tr
-      th Id
-      th Full name
-      th Email
-      th Role
-      th
-  tbody
-    - @users.each do |user|
+  table.striped
+    thead
       tr
-        td= user.id
-        td= user.full_name
-        td= user.email
-        td= user.role
-        td= link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
+        th Id
+        th Full name
+        th Email
+        th Role
+        th
+    tbody
+      - @users.each do |user|
+        tr
+          td= user.id
+          td= user.full_name
+          td= user.email
+          td= user.role
+          td= link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'

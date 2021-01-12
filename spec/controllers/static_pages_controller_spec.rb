@@ -6,9 +6,9 @@ RSpec.describe StaticPagesController, type: :controller do
   render_views
 
   describe 'GET /home' do
-    subject!(:static_pages_controller) { get :home }
+    subject!(:home_action) { get :home }
 
-    it { expect(static_pages_controller).to have_http_status(:success) }
-    it { expect(static_pages_controller).to render_template(:home) }
+    it { expect(home_action).to have_http_status(:success) }
+    it { expect(home_action).to render_template(:home) }
   end
 end

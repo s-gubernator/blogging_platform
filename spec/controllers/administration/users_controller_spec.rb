@@ -10,25 +10,25 @@ RSpec.describe Administration::UsersController, type: :controller do
   describe 'GET /index' do
     context 'when user with role "admin" is logged' do
       login_admin
-      subject(:users_controller) { get :index }
+      subject(:index_action) { get :index }
 
-      it { expect(users_controller).to have_http_status(:success) }
+      it { expect(index_action).to have_http_status(:success) }
     end
 
     context 'when user with role "simple" is logged' do
       login_simple
-      subject(:users_controller) { get :index }
+      subject(:index_action) { get :index }
 
-      it { expect(users_controller).to have_http_status(:unauthorized) }
+      it { expect(index_action).to have_http_status(:unauthorized) }
     end
   end
 
   describe 'DELETE /destroy' do
     context 'when user with role "admin" is logged' do
       login_admin
-      subject(:users_controller) { -> { delete :destroy, params: { id: user.id } } }
+      subject(:delete_action) { -> { delete :destroy, params: { id: user.id } } }
 
-      it { expect(users_controller).to change(User, :count).by(-1) }
+      it { expect(delete_action).to change(User, :count).by(-1) }
 
       it 'redirects to the users list' do
         delete :destroy, params: { id: user.id }
@@ -38,9 +38,9 @@ RSpec.describe Administration::UsersController, type: :controller do
 
     context 'when user with role "simple" is logged' do
       login_simple
-      subject(:users_controller) { delete :destroy, params: { id: user.id } }
+      subject(:delete_action) { delete :destroy, params: { id: user.id } }
 
-      it { expect(users_controller).to have_http_status(:unauthorized) }
+      it { expect(delete_action).to have_http_status(:unauthorized) }
     end
   end
 end

@@ -7,9 +7,9 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
   describe 'GET /home' do
     context 'when unregistered visitor open link /administration' do
-      subject!(:dashboard_controller) { get :home }
+      subject!(:home_action) { get :home }
 
-      it { expect(dashboard_controller).to have_http_status(:unauthorized) }
+      it { expect(home_action).to have_http_status(:unauthorized) }
 
       it 'returns json error message' do
         body = JSON.parse(response.body)
@@ -19,17 +19,17 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
     context 'when user with role "admin" is logged' do
       login_admin
-      subject!(:dashboard_controller) { get :home }
+      subject!(:home_action) { get :home }
 
-      it { expect(dashboard_controller).to have_http_status(:success) }
-      it { expect(dashboard_controller).to render_template(:home) }
+      it { expect(home_action).to have_http_status(:success) }
+      it { expect(home_action).to render_template(:home) }
     end
 
     context 'when user with role "simple" is logged' do
       login_simple
-      subject!(:dashboard_controller) { get :home }
+      subject!(:home_action) { get :home }
 
-      it { expect(dashboard_controller).to have_http_status(:unauthorized) }
+      it { expect(home_action).to have_http_status(:unauthorized) }
 
       it 'returns json error message' do
         body = JSON.parse(response.body)

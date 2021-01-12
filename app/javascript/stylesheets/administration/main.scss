@@ -13,32 +13,10 @@ body {
   flex: 1;
 }
 
-.row .col  {
-  margin: 0;
-  padding: 0;
-
-  ul {
-    margin: 0;
-  }
-}
-
-.admin-side-nav {
-  background: $slategray;
-  min-height: 100vh;
-  margin-bottom: -2em;
-}
-
-.admin-side-nav a {
-  padding: 0.5em 3em;
-  text-decoration: none;
-  font-size: 1.5em;
-  color: $white;
-}
-
 li.active {
-  background-color: $cian;
-  border: 0.2em solid $slategray;
-  border-radius: 0.5em;
+  background-color: $light-cian !important;
+  //border: 0.2em solid $slategray;
+  //border-radius: 0.5em;
 
   a {
     color: $black;
@@ -47,10 +25,6 @@ li.active {
   a:hover {
     color: $dark-cian;
   }
-}
-
-.admin-side-nav a:hover {
-  color: $light-cian;
 }
 
 .admin-breadcrumb {

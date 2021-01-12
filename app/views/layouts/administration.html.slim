@@ -14,10 +14,6 @@ html
   body.site-window
     = render 'layouts/administration/header'
     main.admin-main-content
-      .row
-        .col.s4.m3.l2
-          = render 'layouts/administration/side_navbar'
-        .col.s8.m9.l102
-          = render_navigation
-          = yield
+      = render_breadcrumbs
+      = yield
     = render 'layouts/administration/footer'

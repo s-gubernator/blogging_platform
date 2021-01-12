@@ -9,7 +9,7 @@ module NavigationHelper
     nav_items << { title: title, url: url }
   end
 
-  def render_navigation
-    render partial: 'shared/navigation', locals: { nav_items: nav_items }
+  def render_breadcrumbs
+    render partial: 'shared/breadcrumbs', locals: { nav_items: nav_items }
   end
 end

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 module NavigationHelper
   def nav_items
-    @nav_items ||= [ { title: 'Home', url: '/' } ]
+    @nav_items ||= [{ title: 'Home', url: '/' }]
   end
 
   def navigation_add(title, url)

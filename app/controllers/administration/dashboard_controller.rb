@@ -5,5 +5,9 @@ module Administration
     def home
       authorize :dashboard, :home?
     end
+
+    def test
+      skip_authorization
+    end
   end
 end

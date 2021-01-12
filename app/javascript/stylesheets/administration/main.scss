@@ -35,6 +35,20 @@ body {
   color: $white;
 }
 
+li.active {
+  background-color: $cian;
+  border: 0.2em solid $slategray;
+  border-radius: 0.5em;
+
+  a {
+    color: $black;
+  }
+
+  a:hover {
+    color: $dark-cian;
+  }
+}
+
 .admin-side-nav a:hover {
   color: $light-cian;
 }

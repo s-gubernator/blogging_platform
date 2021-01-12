@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   namespace :administration do
     root 'dashboard#home'
 
+    get '/test', to: 'dashboard#test'
+
     resources :users, only: %i[index destroy]
   end
 end

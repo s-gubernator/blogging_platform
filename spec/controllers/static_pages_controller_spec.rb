@@ -3,17 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe StaticPagesController, type: :controller do
+  render_views
+
   describe 'GET /home' do
-    render_views
+    subject! { get :home }
 
-    it 'returns http success' do
-      get :home
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'renders home template' do
-      get :home
-      expect(response).to render_template(:home)
-    end
+    it { expect(response).to have_http_status(:success) }
+    it { expect(response).to render_template(:home) }
   end
 end

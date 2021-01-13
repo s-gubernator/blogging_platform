@@ -1,0 +1,70 @@
+body {
+  height: 100%;
+}
+
+.site-window {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  background-color: $light-cian;
+}
+
+.admin-main-content {
+  flex: 1;
+}
+
+li.active {
+  background-color: $light-cian !important;
+
+  a {
+    color: $black;
+  }
+
+  a:hover {
+    color: $dark-cian;
+  }
+}
+
+.admin-breadcrumb {
+  margin: 1em 0em;
+}
+
+.breadcrumb {
+  color: $dark-cian;
+  font-size: 1.1em;
+
+  &:before {
+    color: $dark-cian;
+    font-size: 1.2em;
+  }
+
+  &:last-child {
+    color: $slategray;
+  }
+}
+
+#toast-container {
+  position: fixed !important;
+  top: 4em !important;
+  left: 11em !important;
+}
+
+.toast {
+  top: 2em;
+  width: 90%;
+  clear: both;
+  margin-top: 1em;
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  min-height: 3em;
+  line-height: 1.5em;
+  word-break: keep-all;
+  background-color: $cosmic-latte;
+  padding: 0.5em 2em;
+  font-size: 1.1em;
+  color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

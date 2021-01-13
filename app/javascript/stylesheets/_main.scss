@@ -28,10 +28,6 @@
 
 .form-card {
   display: inline-block;
-  margin-bottom: 2em;
-  padding: 1.5em 2em;
-  border: 0.1em solid $light-grey;
-  background-color: $white;
 
   .pink-text {
     color: $pale-violet-red;
@@ -41,6 +37,8 @@
   .btn {
     margin-top: 2em;
     width: 100%;
+    font-size: 1.2em;
+    text-transform: none;
   }
 }
 
@@ -54,4 +52,27 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active  {
     -webkit-box-shadow: 0 0 0 1.85em $white inset !important;
+}
+
+table.striped > tbody > tr:nth-child(odd) {
+  background-color: $cian;
+}
+
+.link-as-button {
+  font-size: 0.8em;
+  background-color: $slategray;
+  color: $white;
+  padding: 0.5em 1em;
+  border-radius: 0.4em;
+}
+
+a.link-as-button:hover {
+  background-color: $dark-cian;
+}
+
+.default-card {
+  margin: 2em;
+  padding: 1em 2em;
+  border: 0.1em solid $light-grey;
+  background-color: $white;
 }

@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe Administration::DashboardController, type: :controller do
-  describe 'GET /home' do
-    render_views
+  render_views
 
+  describe 'GET /home' do
     context 'when unregistered visitor open link /administration' do
-      it 'returns http unauthorized' do
+      it 'returns unauthorized status for visitor' do
         get :home
         expect(response).to have_http_status(:unauthorized)
       end
@@ -21,22 +21,16 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
     context 'when user with role "admin" is logged' do
       login_admin
+      subject! { get :home }
 
-      it 'returns http success' do
-        get :home
-        expect(response).to have_http_status(:success)
-      end
-
-      it 'renders home template' do
-        get :home
-        expect(response).to render_template(:home)
-      end
+      it { expect(response).to have_http_status(:success) }
+      it { expect(response).to render_template(:home) }
     end
 
     context 'when user with role "simple" is logged' do
       login_simple
 
-      it 'returns http unauthorized' do
+      it 'returns unauthorized status for simple user' do
         get :home
         expect(response).to have_http_status(:unauthorized)
       end

@@ -1,8 +1,8 @@
 center
   h4.form-title Sign up
-  .container.form-card.z-depth-1.col.s12
+  .container.default-card.form-card.z-depth-1.col.s12
     = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = render "devise/shared/error_messages", resource: resource
+      = render "shared/error_messages", object: resource
       .input
         = f.label :first_name, class: "left"
         = f.text_field :first_name, autofocus: true
@@ -19,4 +19,4 @@ center
         = f.label :password_confirmation, class: "left"
         = f.password_field :password_confirmation, autocomplete: "new-password"
       .actions
-        = f.submit "Sign up", class: "btn btm-large waves-effect"
+        = f.submit "Sign up", class: "btn"

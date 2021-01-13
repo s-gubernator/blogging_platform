@@ -1,8 +1,8 @@
 center
   h4.form-title= "Edit #{resource_name.to_s.humanize}"
-  .container.form-card.z-depth-1.col.s12
+  .container.default-card.form-card.z-depth-1
     = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      = render "devise/shared/error_messages", resource: resource
+      = render "shared/error_messages", object: resource
       .field
         = f.label :first_name, class: "left"
         = f.text_field :first_name, autofocus: true
@@ -29,4 +29,4 @@ center
           | (we need your current password to confirm your changes)
         = f.password_field :current_password, autocomplete: "current-password"
       .actions
-        = f.submit "Update", class: "btn btm-large waves-effect"
+        = f.submit "Update", class: "btn"

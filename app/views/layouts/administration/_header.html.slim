@@ -1,0 +1,12 @@
+nav.navbar-fixed.cyan.darken-4
+  .container
+    a.sidenav-trigger data-target="slide-out" href="#"
+      i.material-icons menu
+    .nav-wrapper
+      .brand-logo
+        = link_to 'Logo', root_path
+      ul.right.hide-on-med-and-down
+        li= main_nav_link('Dashboard', administration_root_path)
+        li= main_nav_link('Users', administration_users_path)
+
+= render 'layouts/administration/mobile_menu'

@@ -29,18 +29,18 @@ li.active {
   margin: 1em 0em;
 }
 
-a.breadcrumb {
+.breadcrumb {
   color: $dark-cian;
   font-size: 1.1em;
-}
 
-.breadcrumb:before {
-  color: $dark-cian;
-  font-size: 1.2em;
-}
+  &:before {
+    color: $dark-cian;
+    font-size: 1.2em;
+  }
 
-.breadcrumb:last-child {
-  color: $slategray;
+  &:last-child {
+    color: $slategray;
+  }
 }
 
 #toast-container {

@@ -21,13 +21,10 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
     context 'when user with role "admin" is logged' do
       login_admin
-      subject!(:home_action) { get :home }
+      subject! { get :home }
 
-      it 'returns success for admin user' do
-        expect(response).to have_http_status(:success)
-      end
-
-      it { expect(home_action).to render_template(:home) }
+      it { expect(response).to have_http_status(:success) }
+      it { expect(response).to render_template(:home) }
     end
 
     context 'when user with role "simple" is logged' do

@@ -3,7 +3,7 @@
 
 .container
   - if notice.present?
-    #notice.default-card.notice= notice
+    = tag.div(id: 'notice', data: { notice: notice })
 
   table.striped
     thead
@@ -21,5 +21,3 @@
           td= user.email
           td= user.role
           td= link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
-
-javascript:

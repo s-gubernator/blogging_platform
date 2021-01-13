@@ -10,6 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   M.AutoInit();
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   M.toast( { html: 'Test content', displayLength: 4000 } );
-// })
+document.addEventListener('DOMContentLoaded', () => {
+  let noticeEl = document.querySelector('#notice');
+
+  if (noticeEl) {  M.toast( { html: noticeEl.dataset.notice, displayLength: 5000 })}
+})

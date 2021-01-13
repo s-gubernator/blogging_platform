@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    title
+      = yield :title
+    meta content="width=device-width,initial-scale=1" name="viewport"
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_pack_tag 'administration', media: 'all'
+    = javascript_pack_tag 'administration'
+    link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"
+
+  body.site-window
+    = render 'layouts/administration/header'
+    main.admin-main-content
+      = render_breadcrumbs
+      = yield
+    = render 'layouts/administration/footer'

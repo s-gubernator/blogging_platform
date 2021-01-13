@@ -1,0 +1,6 @@
+.container
+  .nav.admin-breadcrumb
+    .nav-wrapper
+      - nav_items.each do |item|
+        = link_to item[:title], item[:url], class: 'breadcrumb'
+      = link_to yield(:title), request.path, class: 'breadcrumb'

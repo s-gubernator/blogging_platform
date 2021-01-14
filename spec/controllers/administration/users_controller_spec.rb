@@ -11,21 +11,25 @@ RSpec.describe Administration::UsersController, type: :controller do
     context 'when user with role "admin" is logged' do
       login_admin
 
-      it 'returns success for admin user' do
-        get :index
-        expect(response).to have_http_status(:success)
-      end
+      subject! { get :index }
+
+      it { expect(response).to have_http_status(:success) }
+      it { expect(response).to render_template(:index) }
     end
 
-    # context 'when user with role "simple" is logged' do
-    #   login_simple
-    #
-    #   it 'raises NotAuthorizedError' do
-    #     get :index
-    #     #expect(response).to have_http_status(:unauthorized)
-    #     expect { response }.to raise_error(Pundit::NotAuthorizedError)
-    #   end
-    # end
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns unauthorized http status' do
+        get :index
+        expect(response).to have_http_status(:unauthorized)
+      end
+
+      it 'returns unauthorized error page' do
+        get :index
+        expect(response).to render_template('errors/unauthorized')
+      end
+    end
   end
 
   describe 'DELETE /destroy' do
@@ -40,13 +44,18 @@ RSpec.describe Administration::UsersController, type: :controller do
       it { expect(delete_action).to redirect_to(administration_users_url) }
     end
 
-    # context 'when user with role "simple" is logged' do
-    #   login_simple
-    #
-    #   it 'raises NotAuthorizedError' do
-    #     subject { delete :destroy, params: { id: user.id } }
-    #     expect { response }.to raise_error(Pundit::NotAuthorizedError)
-    #   end
-    # end
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns unauthorized http status' do
+        delete :destroy, params: { id: user.id }
+        expect(response).to have_http_status(:unauthorized)
+      end
+
+      it 'returns unauthorized error page' do
+        delete :destroy, params: { id: user.id }
+        expect(response).to render_template('errors/unauthorized')
+      end
+    end
   end
 end

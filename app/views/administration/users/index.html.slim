@@ -8,10 +8,10 @@
   table.striped
     thead
       tr
-        th Id
+        th = sort_link(@q, :id)
         th Full name
-        th Email
-        th Role
+        th = sort_link(@q, :email)
+        th = sort_link(@q, :role)
         th
     tbody
       - @users.each do |user|

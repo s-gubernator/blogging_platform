@@ -37,6 +37,7 @@ gem 'annotate'
 gem 'devise'
 gem 'enumerize'
 gem 'pundit'
+gem 'ransack'
 gem 'slim'
 gem 'strong_migrations'
 

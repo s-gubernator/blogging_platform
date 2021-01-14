@@ -73,3 +73,24 @@ li.active {
   color: $slategray;
   text-decoration: underline;
 }
+
+.dropdown-content {
+  li {
+    line-height: 1em;
+    padding: 0em;
+  }
+}
+
+.search-form-card {
+  margin: 0em;
+  padding: 1em;
+  border: 0.1em solid $light-grey;
+  background-color: $white;
+
+  .btn {
+    margin-top: 1.5em;
+    width: 100%;
+    font-size: 1.2em;
+    text-transform: none;
+  }
+}

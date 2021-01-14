@@ -6,7 +6,6 @@ module Administration
 
     def index
       authorize User
-
       @q = User.ransack(params[:q])
       @users = @q.result(distinct: true)
     end

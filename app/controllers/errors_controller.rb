@@ -3,6 +3,10 @@
 class ErrorsController < ApplicationController
   skip_after_action :verify_authorized
 
+  def unauthorized
+    render status: :unauthorized
+  end
+
   def not_found
     render status: :not_found
   end

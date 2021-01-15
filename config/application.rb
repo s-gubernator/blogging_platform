@@ -34,6 +34,5 @@ module BloggingPlatform
     # Don't generate system test files.
     config.generators.system_tests = nil
     config.exceptions_app = self.routes
-    #config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :unauthorized
   end
 end

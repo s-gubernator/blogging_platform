@@ -94,3 +94,11 @@ li.active {
     text-transform: none;
   }
 }
+
+.pagination {
+  li.active {
+    a {
+      color: $dark-cian;
+    }
+  }
+}

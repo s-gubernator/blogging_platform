@@ -7,15 +7,9 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
   describe 'GET /home' do
     context 'when unregistered visitor open link /administration' do
-      it 'returns unauthorized status for visitor' do
+      it 'returns unauthorized http status' do
         get :home
-        expect(response).to have_http_status(:unauthorized)
-      end
-
-      it 'returns json error message' do
-        get :home
-        body = JSON.parse(response.body)
-        expect(body['message']).to eq('Access denied')
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
 
@@ -32,13 +26,7 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
       it 'returns unauthorized status for simple user' do
         get :home
-        expect(response).to have_http_status(:unauthorized)
-      end
-
-      it 'returns json error message' do
-        get :home
-        body = JSON.parse(response.body)
-        expect(body['message']).to eq('Access denied')
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
   end

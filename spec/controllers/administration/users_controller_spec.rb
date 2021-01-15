@@ -11,18 +11,18 @@ RSpec.describe Administration::UsersController, type: :controller do
     context 'when user with role "admin" is logged' do
       login_admin
 
-      it 'returns success for admin user' do
-        get :index
-        expect(response).to have_http_status(:success)
-      end
+      subject! { get :index }
+
+      it { expect(response).to have_http_status(:success) }
+      it { expect(response).to render_template(:index) }
     end
 
     context 'when user with role "simple" is logged' do
       login_simple
 
-      it 'returns unauthorized for simple user' do
+      it 'returns unauthorized http status' do
         get :index
-        expect(response).to have_http_status(:unauthorized)
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
   end
@@ -42,9 +42,9 @@ RSpec.describe Administration::UsersController, type: :controller do
     context 'when user with role "simple" is logged' do
       login_simple
 
-      it 'returns unauthorized for simple user' do
+      it 'returns unauthorized http status' do
         delete :destroy, params: { id: user.id }
-        expect(response).to have_http_status(:unauthorized)
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
   end

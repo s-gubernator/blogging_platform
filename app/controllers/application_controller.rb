@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   after_action :verify_authorized, unless: :devise_controller?
 
-  rescue_from Pundit::NotAuthorizedError, with: :deny_access
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
 
   protected
 
@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
                                       keys: %i[first_name last_name email password])
   end
 
-  def deny_access
-    render json: { message: 'Access denied' }, status: :unauthorized
+  def not_authorized
+    redirect_to unauthorized_path
   end
 end

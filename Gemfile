@@ -38,6 +38,7 @@ gem 'devise'
 gem 'enumerize'
 gem 'pundit'
 gem 'ransack'
+gem 'simple_form'
 gem 'slim'
 gem 'strong_migrations'
 

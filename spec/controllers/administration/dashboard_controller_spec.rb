@@ -9,12 +9,7 @@ RSpec.describe Administration::DashboardController, type: :controller do
     context 'when unregistered visitor open link /administration' do
       it 'returns unauthorized http status' do
         get :home
-        expect(response).to have_http_status(:unauthorized)
-      end
-
-      it 'returns unauthorized error page' do
-        get :home
-        expect(response).to render_template('errors/unauthorized')
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
 
@@ -31,12 +26,7 @@ RSpec.describe Administration::DashboardController, type: :controller do
 
       it 'returns unauthorized status for simple user' do
         get :home
-        expect(response).to have_http_status(:unauthorized)
-      end
-
-      it 'returns unauthorized error page' do
-        get :home
-        expect(response).to render_template('errors/unauthorized')
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
   end

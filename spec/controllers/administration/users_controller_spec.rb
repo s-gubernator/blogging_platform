@@ -22,12 +22,7 @@ RSpec.describe Administration::UsersController, type: :controller do
 
       it 'returns unauthorized http status' do
         get :index
-        expect(response).to have_http_status(:unauthorized)
-      end
-
-      it 'returns unauthorized error page' do
-        get :index
-        expect(response).to render_template('errors/unauthorized')
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
   end
@@ -49,12 +44,7 @@ RSpec.describe Administration::UsersController, type: :controller do
 
       it 'returns unauthorized http status' do
         delete :destroy, params: { id: user.id }
-        expect(response).to have_http_status(:unauthorized)
-      end
-
-      it 'returns unauthorized error page' do
-        delete :destroy, params: { id: user.id }
-        expect(response).to render_template('errors/unauthorized')
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
   end

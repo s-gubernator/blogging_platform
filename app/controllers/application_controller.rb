@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
   def not_authorized
-    #render 'errors/unauthorized', status: :unauthorized
     redirect_to unauthorized_path
   end
 end

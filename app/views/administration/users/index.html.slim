@@ -4,7 +4,7 @@
 .container
   - if notice.present?
     = tag.div(id: 'notice', data: { notice: notice })
-    
+
   = render 'index_search_form'
 
   table.striped
@@ -23,3 +23,5 @@
           td= user.email
           td= user.role
           td= link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
+
+  = paginate @users

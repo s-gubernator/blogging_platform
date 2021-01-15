@@ -36,6 +36,7 @@ gem 'rubocop-rspec', require: false
 gem 'annotate'
 gem 'devise'
 gem 'enumerize'
+gem 'kaminari'
 gem 'pundit'
 gem 'ransack'
 gem 'slim'

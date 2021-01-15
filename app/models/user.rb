@@ -40,6 +40,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  paginates_per 5
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -5,7 +5,7 @@ require 'spec_helper'
 RSpec.describe 'routes to the ErrorsController', type: :routing do
   describe 'routing' do
     it 'routes to #unauthorized' do
-      expect(get('/unauthorized')).to route_to('errors#unauthorized')
+      expect(get('/401')).to route_to('errors#unauthorized')
     end
 
     it 'routes to #not_found' do

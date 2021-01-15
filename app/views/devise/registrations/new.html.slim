@@ -1,22 +1,16 @@
 center
-  h4.form-title Sign up
-  .container.default-card.form-card.z-depth-1.col.s12
-    = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+  .container.default-card.form-card.z-depth-1
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
       = render "shared/error_messages", object: resource
       .input
-        = f.label :first_name, class: "left"
-        = f.text_field :first_name, autofocus: true
+        = f.input :first_name, placeholder: 'First name', label: false, autofocus: true
       .input
-        = f.label :last_name, class: "left"
-        = f.text_field :last_name, autofocus: true
+        = f.input :last_name, placeholder: 'Last name', label: false, autofocus: true
       .input
-        = f.label :email, class: "left"
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+        = f.input :email, placeholder: 'Email', label: false, autofocus: true, autocomplete: "email"
       .input
-        = f.label :password, class: "left"
-        = f.password_field :password, autocomplete: "new-password"
+        = f.input :password, placeholder: 'Password', label: false, autocomplete: "new-password"
       .input
-        = f.label :password_confirmation, class: "left"
-        = f.password_field :password_confirmation, autocomplete: "new-password"
+        = f.input :password_confirmation, placeholder: 'Password confirmation', label: false, autocomplete: "new-password"
       .actions
-        = f.submit "Sign up", class: "btn"
+        = f.button :submit, 'Sign up', class: 'btn'

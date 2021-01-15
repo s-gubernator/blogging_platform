@@ -31,19 +31,25 @@
 
   .pink-text {
     color: $pale-violet-red;
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 
   .btn {
     margin-top: 2em;
     width: 100%;
     font-size: 1.2em;
+    border-radius: 0.4em;
     text-transform: none;
+    color: $white;
   }
 }
 
 .bottom-space {
   margin-bottom: 2em;
+}
+
+.top-space {
+  margin-top: 2em;
 }
 
 /* Remove input background colour for Chrome autocomplete */
@@ -64,10 +70,24 @@ table.striped > tbody > tr:nth-child(odd) {
   color: $white;
   padding: 0.5em 1em;
   border-radius: 0.4em;
+
+  a:hover {
+    background-color: $dark-cian;
+  }
 }
 
 a.link-as-button:hover {
   background-color: $dark-cian;
+}
+
+.link-as-button-big {
+  @extend .link-as-button;
+  font-size: 1em;
+  background-color: $teal;
+}
+
+a.link-as-button-big:hover {
+  background-color: $blue-green;
 }
 
 .default-card {
@@ -75,4 +95,5 @@ a.link-as-button:hover {
   padding: 1em 2em;
   border: 0.1em solid $light-grey;
   background-color: $white;
+  min-width: 50%;
 }

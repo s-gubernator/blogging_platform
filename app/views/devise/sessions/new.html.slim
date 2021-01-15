@@ -1,22 +1,16 @@
 center
-  h4.form-title Log in
-  .container.default-card.form-card.z-depth-1
-    = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .default-card.form-card.z-depth-1
+    = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
       - if flash[:alert].present?
         .error
           = flash[:alert]
       .input
-        = f.label :email, class: "left"
-        br
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+        = f.input :email, placeholder: 'email', label: false, autocomplete: 'email', autofocus: true
       .input
-        = f.label :password, class: "left"
-        = f.password_field :password, autocomplete: "current-password"
-      - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-        = link_to "Forgot your password?", new_password_path(resource_name), class: "pink-text right"
-      - if devise_mapping.rememberable?
-        label.left
-          = f.check_box :remember_me, id: "remember_me"
-          span Remember me
+        = f.input :password, placeholder: 'password', label: false, autocomplete: 'current-password'
+      = render 'additional_options', form: f
       .action
-        = f.submit 'Log in', class: "btn"
+        = f.button :submit, 'Log in', class: 'btn'
+
+      hr.top-space.bottom-space
+        = link_to 'Create new account', new_user_registration_path, class: 'link-as-button-big'

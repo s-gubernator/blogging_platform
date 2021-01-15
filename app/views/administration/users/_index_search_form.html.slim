@@ -1,11 +1,11 @@
 .row.search-form-card
-  = search_form_for @q, builder: SimpleForm::FormBuilder, url: administration_users_url, method: :get do |f|
+  = search_form_for @q, builder: SimpleForm::FormBuilder, url: administration_users_url, defaults: { required: false }, method: :get do |f|
     .input_field.col.s3
-      = f.input :first_name_or_last_name_cont, label: 'Full name contains', required: false
+      = f.input :first_name_or_last_name_cont, label: 'Full name contains'
     .input_field.col.s3
-      = f.label :email_cont, 'Email contains', required: false
+      = f.label :email_cont, 'Email contains'
       = f.search_field :email_cont
     .input_field.col.s3
-      = f.input :role_eq, label: 'Role equals', collection: User.role.values, include_blank: true, required: false
+      = f.input :role_eq, label: 'Role equals', collection: User.role.values, include_blank: true
     .field.col.s3
       = f.button :submit, 'Search', class: "btn"

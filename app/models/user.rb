@@ -22,6 +22,8 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 class User < ApplicationRecord
+  USERS_PER_PAGE = 5
+
   extend Enumerize
 
   enumerize :role, in: %i[simple admin],
@@ -40,7 +42,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  paginates_per 5
+  paginates_per(USERS_PER_PAGE)
 
   def full_name
     "#{first_name} #{last_name}"

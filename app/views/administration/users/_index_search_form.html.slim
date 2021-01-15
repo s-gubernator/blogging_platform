@@ -1,0 +1,13 @@
+.row.search-form-card
+  = search_form_for @q, url: administration_users_url, method: :get do |f|
+    .input_field.col.s3
+      = f.label :email_cont
+      = f.search_field :email_cont
+    .input_field.col.s3
+      = f.label :first_name_or_last_name_cont, 'Full name contains'
+      = f.search_field :first_name_or_last_name_cont
+    .input_field.col.s3
+      = f.label :role_eq
+      = f.select :role_eq, options_for_select(User.role.values, @q.role_eq), include_blank: true
+    .field.col.s3
+      = f.submit 'Search', class: "btn"

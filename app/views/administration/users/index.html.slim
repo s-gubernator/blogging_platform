@@ -4,14 +4,16 @@
 .container
   - if notice.present?
     = tag.div(id: 'notice', data: { notice: notice })
+    
+  = render 'index_search_form'
 
   table.striped
     thead
       tr
-        th Id
-        th Full name
-        th Email
-        th Role
+        th = sort_link(@q, :id)
+        th = sort_link(@q, :last_name, [:last_name, 'first_name asc'], 'Full name')
+        th = sort_link(@q, :email)
+        th = sort_link(@q, :role)
         th
     tbody
       - @users.each do |user|

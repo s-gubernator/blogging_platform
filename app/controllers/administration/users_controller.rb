@@ -6,7 +6,8 @@ module Administration
 
     def index
       authorize User
-      @users = User.all
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true)
     end
 
     def destroy

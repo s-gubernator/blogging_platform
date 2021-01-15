@@ -24,4 +24,5 @@
           td= user.role
           td= link_to 'Destroy', administration_user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
 
-  = paginate @users
+  .center
+    = paginate @users

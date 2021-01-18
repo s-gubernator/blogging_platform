@@ -19,5 +19,10 @@ RSpec.describe Topic, type: :model do
       topic.save
       expect(topic).to be_persisted
     end
+
+    describe 'topic validation' do
+      it { expect(topic).to validate_presence_of(:name) }
+      it { expect(topic).to validate_length_of(:name).is_at_most(255) }
+    end
   end
 end

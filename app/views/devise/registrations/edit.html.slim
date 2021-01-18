@@ -1,32 +1,14 @@
 center
-  h4.form-title= "Edit #{resource_name.to_s.humanize}"
   .container.default-card.form-card.z-depth-1
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-      = render "shared/error_messages", object: resource
-      .field
-        = f.label :first_name, class: "left"
-        = f.text_field :first_name, autofocus: true
-      .field
-        = f.label :last_name, class: "left"
-        = f.text_field :last_name, autofocus: true
-      .field
-        = f.label :email, class: "left"
-        = f.email_field :email, autofocus: true, autocomplete: "email"
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      .pink-text
+        = f.error_notification
+      = f.input :first_name, placeholder: 'First name', label: false, autofocus: true
+      = f.input :last_name, placeholder: 'Last name', label: false, autofocus: true
+      = f.input :email, placeholder: 'Email', label: false, autofocus: true, autocomplete: 'email'
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         div= "Currently waiting confirmation for: #{resource.unconfirmed_email}"
-      .field
-        = f.label :password, class: "left"
-        i
-        - if @minimum_password_length
-          em= " (#{@minimum_password_length} characters minimum. Leave blank if you don't want to change it)"
-        = f.password_field :password, autocomplete: "new-password"
-      .field
-        = f.label :password_confirmation, class: "left"
-        = f.password_field :password_confirmation, autocomplete: "new-password"
-      .field
-        = f.label :current_password, class: "left"
-        i
-          | (we need your current password to confirm your changes)
-        = f.password_field :current_password, autocomplete: "current-password"
-      .actions
-        = f.submit "Update", class: "btn"
+      = f.input :password, placeholder: 'Password', label: false, autocomplete: 'new-password', hint: "*#{@minimum_password_length} characters minimum. Leave blank if you don't want to change it"
+      = f.input :password_confirmation, placeholder: 'Password confirmation', label: false, autocomplete: 'new-password'
+      = f.input :current_password, placeholder: 'Current password', label: false, autocomplete: 'current-password', hint: '*we need your current password to confirm your changes'
+      = f.button :submit, 'Update', class: 'btn'

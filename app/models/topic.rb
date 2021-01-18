@@ -10,7 +10,7 @@
 #  updated_at :datetime         not null
 #
 class Topic < ApplicationRecord
-  PREDEFINED_NAMES = %w(education fashion finance food lifestyle movies music politics sports travel)
+  PREDEFINED_NAMES = %w[education fashion finance food lifestyle movies music politics sports travel].freeze
 
   validates :name, presence: true, length: { maximum: 255 }
 end

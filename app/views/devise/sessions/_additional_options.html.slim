@@ -1,5 +1,5 @@
 - if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations'
-  = link_to "Forgot your password?", new_password_path(resource_name), class: "pink-text right"
+  = link_to "Forgot your password?", new_password_path(resource_name), class: "pink-text-small right"
 - if devise_mapping.rememberable?
   label.left
     = form.check_box :remember_me, id: "remember_me"

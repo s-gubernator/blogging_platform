@@ -4,13 +4,7 @@ center
       - if flash[:alert].present?
         .error
           = flash[:alert]
-      .input
-        = f.input :email, placeholder: 'email', label: false, autocomplete: 'email', autofocus: true
-      .input
-        = f.input :password, placeholder: 'password', label: false, autocomplete: 'current-password'
+      = f.input :email, placeholder: 'email', label: false, autocomplete: 'email', autofocus: true
+      = f.input :password, placeholder: 'password', label: false, autocomplete: 'current-password'
       = render 'additional_options', form: f
-      .action
-        = f.button :submit, 'Log in', class: 'btn'
-
-      hr.top-space.bottom-space
-        = link_to 'Create new account', new_user_registration_path, class: 'link-as-button-big'
+      = f.button :submit, 'Log in', class: 'btn'

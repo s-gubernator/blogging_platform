@@ -1,16 +1,11 @@
 center
   .container.default-card.form-card.z-depth-1
     = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-      = render "shared/error_messages", object: resource
-      .input
-        = f.input :first_name, placeholder: 'First name', label: false, autofocus: true
-      .input
-        = f.input :last_name, placeholder: 'Last name', label: false, autofocus: true
-      .input
-        = f.input :email, placeholder: 'Email', label: false, autofocus: true, autocomplete: "email"
-      .input
-        = f.input :password, placeholder: 'Password', label: false, autocomplete: "new-password"
-      .input
-        = f.input :password_confirmation, placeholder: 'Password confirmation', label: false, autocomplete: "new-password"
-      .actions
-        = f.button :submit, 'Sign up', class: 'btn'
+      .pink-text
+        = f.error_notification
+      = f.input :first_name, placeholder: 'First name', label: false, autofocus: true
+      = f.input :last_name, placeholder: 'Last name', label: false, autofocus: true
+      = f.input :email, placeholder: 'Email', label: false, autofocus: true, autocomplete: "email"
+      = f.input :password, placeholder: 'Password', label: false, autocomplete: "new-password"
+      = f.input :password_confirmation, placeholder: 'Password confirmation', label: false, autocomplete: "new-password"
+      = f.button :submit, 'Sign up', class: 'btn'

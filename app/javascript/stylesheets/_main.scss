@@ -31,6 +31,11 @@
 
   .pink-text {
     color: $pale-violet-red;
+    font-size: 1.2em;
+  }
+
+  .pink-text-small {
+    @extend .pink-text;
     font-size: 0.9em;
   }
 

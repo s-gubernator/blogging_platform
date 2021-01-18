@@ -53,8 +53,15 @@
 
 .pagination {
   li.active {
+    background-color: $light-cian !important;
+    border-bottom: 0.2em solid $teal;
+
     a {
-      color: $dark-cian;
+      color: $teal;
     }
+  }
+
+  a:hover {
+    color: $teal;
   }
 }

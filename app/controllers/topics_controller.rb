@@ -1,31 +1,34 @@
 # frozen_string_literal: true
 
 class TopicsController < ApplicationController
-  before_action :set_topic, only: %i[show edit update destroy]
+  before_action :set_topic, only: %i(show edit update destroy)
   skip_after_action :verify_authorized
 
   def index
-    @topics = Topic.all
+    #@topics = Topic.all
+    @topics = Topic.all.page(params[:page])
   end
+
+  def show; end
 
   def new
     @topic = Topic.new
   end
 
-  def edit; end
-
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
-      redirect_to topics_url, notice: 'Topic was successfully created.'
+      redirect_to topic_url(@topic), notice: 'Topic was successfully created.'
     else
       render :new
     end
   end
 
+  def edit; end
+
   def update
     if @topic.update(topic_params)
-      redirect_to @topic, notice: 'Topic was successfully updated.'
+      redirect_to topic_url(@topic), notice: 'Topic was successfully updated.'
     else
       render :edit
     end

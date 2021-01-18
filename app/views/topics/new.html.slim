@@ -1,3 +1,5 @@
 container
-  = render 'form', topic: @topic
-  = link_to 'Back', topics_path
+  center
+    h5 Create new topic
+    = render 'form', topic: @topic
+    = link_to 'Back', topics_path

@@ -1,8 +1,8 @@
 container
   = render 'shared/notice'
 
-  h1 All topics
-  table
+  h3 All topics
+  table.striped
     thead
       tr
         th Name
@@ -10,8 +10,11 @@ container
     tbody
       - @topics.each do |topic|
         tr
-          td= topic.name
+          td= link_to topic.name, topic_path(topic)
           td= link_to 'Edit', edit_topic_path(topic)
           td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }
-  br
+
+  .center
+    = paginate @topics
+
   = link_to 'New Topic', new_topic_path

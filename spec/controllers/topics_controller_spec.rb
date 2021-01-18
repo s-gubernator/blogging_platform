@@ -33,6 +33,14 @@ RSpec.describe TopicsController, type: :controller do
     end
   end
 
+  describe 'GET /show' do
+    it 'renders a successful response' do
+      Topic.create! valid_attributes
+      get :show
+      expect(response).to be_successful
+    end
+  end
+
   describe 'GET /new' do
     it 'renders a successful response' do
       get :new

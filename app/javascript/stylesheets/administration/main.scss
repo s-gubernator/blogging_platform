@@ -13,18 +13,6 @@ body {
   flex: 1;
 }
 
-li.active {
-  background-color: $light-cian !important;
-
-  a {
-    color: $black;
-  }
-
-  a:hover {
-    color: $dark-cian;
-  }
-}
-
 .admin-breadcrumb {
   margin: 1em 0em;
 }

@@ -1,4 +1,5 @@
 container
-  h5= "Edit topic '#{@topic.name}'"
-  = render 'form', topic: @topic
-  = link_to 'Back', topics_path
+  center
+    h5= "Edit topic '#{@topic.name}'"
+    = render 'form', topic: @topic
+    = link_to 'Back', topics_path

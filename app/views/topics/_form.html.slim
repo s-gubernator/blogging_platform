@@ -1,12 +1,7 @@
-= form_with(model: topic) do |form|
-  - if topic.errors.any?
-    #error_explanation
-      h2
-        = pluralize(topic.errors.count, "error")
-        |  prohibited this topic from being saved:
-      ul
-        - topic.errors.each do |error|
-          li
-            = error.full_message
-  .actions
-    = form.submit
+center
+  .container.default-card.form-card.z-depth-1
+    = simple_form_for(topic) do |f|
+      .pink-text
+        = f.error_notification
+      = f.input :name, placeholder: "Enter topic name", label: false,  autofocus: true
+      = f.button :submit, class: 'btn'

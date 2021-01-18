@@ -1,6 +1,6 @@
-h1
-  | Editing Topic
-= render 'form', topic: @topic
-= link_to 'Show', @topic
-|  | 
-= link_to 'Back', topics_path
+container
+  h5= "Edit topic #{@topic.name}"
+  = render 'form', topic: @topic
+  = link_to 'Show', @topic
+  |  |
+  = link_to 'Back', topics_path

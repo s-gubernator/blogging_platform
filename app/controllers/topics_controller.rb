@@ -8,8 +8,6 @@ class TopicsController < ApplicationController
     @topics = Topic.all
   end
 
-  def show; end
-
   def new
     @topic = Topic.new
   end
@@ -19,7 +17,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
-      redirect_to @topic, notice: 'Topic was successfully created.'
+      redirect_to topics_url, notice: 'Topic was successfully created.'
     else
       render :new
     end

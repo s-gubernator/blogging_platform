@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 class TopicsController < ApplicationController
-  before_action :set_topic, only: %i(show edit update destroy)
+  before_action :set_topic, only: %i[show edit update destroy]
   skip_after_action :verify_authorized
 
   def index
-    #@topics = Topic.all
     @topics = Topic.all.page(params[:page])
   end
 

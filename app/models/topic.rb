@@ -11,7 +11,7 @@
 #
 class Topic < ApplicationRecord
   PREDEFINED_NAMES = %w[education fashion finance food lifestyle movies music politics sports travel].freeze
-  TOPICS_PER_PAGE = 5
+  TOPICS_PER_PAGE = 10
 
   validates :name, presence: true, length: { maximum: 255 }
 

@@ -12,7 +12,7 @@
 # of tools you can use to make these specs even more expressive, but we're
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
-RSpec.describe "/topics", type: :request do
+RSpec.describe TopicsController, type: :controller do
   # Topic. As you add validations to Topic, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
@@ -26,7 +26,7 @@ RSpec.describe "/topics", type: :request do
   describe "GET /index" do
     it "renders a successful response" do
       Topic.create! valid_attributes
-      get topics_url
+      get :index
       expect(response).to be_successful
     end
   end
@@ -34,14 +34,14 @@ RSpec.describe "/topics", type: :request do
   describe "GET /show" do
     it "renders a successful response" do
       topic = Topic.create! valid_attributes
-      get topic_url(topic)
+      get :show
       expect(response).to be_successful
     end
   end
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_topic_url
+      get :new
       expect(response).to be_successful
     end
   end
@@ -49,7 +49,7 @@ RSpec.describe "/topics", type: :request do
   describe "GET /edit" do
     it "render a successful response" do
       topic = Topic.create! valid_attributes
-      get edit_topic_url(topic)
+      get :edit, params: { name: 'test' }
       expect(response).to be_successful
     end
   end
@@ -58,7 +58,7 @@ RSpec.describe "/topics", type: :request do
     context "with valid parameters" do
       it "creates a new Topic" do
         expect {
-          post topics_url, params: { topic: valid_attributes }
+          post :create, params: { topic: valid_attributes }
         }.to change(Topic, :count).by(1)
       end
 

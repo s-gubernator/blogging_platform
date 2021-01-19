@@ -17,17 +17,20 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe 'GET /show' do
-    context 'when user with role "simple" is logged' do
-      login_simple
-
-      it 'renders a successful response' do
-        get :show, params: { id: topic.id }
-        expect(response).to be_successful
-      end
+    it 'renders a successful response' do
+      get :show, params: { id: topic.id }
+      expect(response).to be_successful
     end
   end
 
   describe 'GET /new' do
+    context 'when visitor go to page' do
+      it 'returns unauthorized http status' do
+        get :new
+        expect(response).to redirect_to(unauthorized_url)
+      end
+    end
+
     context 'when user with role "simple" is logged' do
       login_simple
 
@@ -38,22 +41,20 @@ RSpec.describe TopicsController, type: :controller do
     end
   end
 
-  describe 'GET /edit' do
-    context 'when user with role "admin" is logged' do
-      login_admin
+  describe 'POST /create' do
+    let(:params) { { topic: valid_attributes } }
 
-      it 'render a successful response' do
-        get :edit, params: { id: topic.id, name: 'new_name' }
-        expect(response).to be_successful
+    context 'when visitor go to page' do
+      it 'returns unauthorized http status' do
+        post :create, params: params
+        expect(response).to redirect_to(unauthorized_url)
       end
     end
-  end
 
-  describe 'POST /create' do
     context 'with valid parameters for logged user' do
       login_simple
 
-      subject(:create_action) { post :create, params: { topic: valid_attributes } }
+      subject(:create_action) { post :create, params: params }
 
       it { expect { create_action }.to change(Topic, :count).by(1) }
       it { expect(create_action).to redirect_to(topic_url(Topic.last)) }
@@ -73,20 +74,51 @@ RSpec.describe TopicsController, type: :controller do
     end
   end
 
+  describe 'GET /edit' do
+    let(:params) { { id: topic.id, name: 'new_name' } }
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns unauthorized http status' do
+        get :edit, params: params
+        expect(response).to redirect_to(unauthorized_url)
+      end
+    end
+
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'render a successful response' do
+        get :edit, params: params
+        expect(response).to be_successful
+      end
+    end
+  end
+
   describe 'PATCH /update' do
+    let(:params) { { id: topic.id, topic: { name: 'new_test_name' } } }
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns unauthorized http status' do
+        patch :update, params: params
+        expect(response).to redirect_to(unauthorized_url)
+      end
+    end
+
     context 'with valid parameters for admin user' do
       login_admin
 
-      let(:new_attributes) { { name: 'new_test_name' } }
-
       it 'updates the requested topic' do
-        patch :update, params: { id: topic.id, topic: new_attributes }
+        patch :update, params: params
         topic.reload
         expect(controller.notice).to eq('Topic was successfully updated.')
       end
 
       it 'redirects to the topic' do
-        patch :update, params: { id: topic.id, topic: new_attributes }
+        patch :update, params: params
         topic.reload
         expect(response).to redirect_to(topic_url(topic))
       end
@@ -103,12 +135,21 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe 'DELETE /destroy' do
+    let(:params) { { id: topic.id } }
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns unauthorized http status' do
+        delete :destroy, params: params
+        expect(response).to redirect_to(unauthorized_url)
+      end
+    end
+
     context 'when user with role "admin" is logged' do
       login_admin
 
       subject(:delete_action) { delete :destroy, params: params }
-
-      let(:params) { { id: topic.id } }
 
       it { expect { delete_action }.to change(Topic, :count).by(-1) }
       it { expect(delete_action).to redirect_to(topics_url) }

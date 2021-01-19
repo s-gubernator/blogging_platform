@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe TopicsController, type: :controller do
+  render_views
+
   let!(:topic) { create(:topic) }
   let(:valid_attributes) { { id: 1, name: 'Test' } }
   let(:invalid_attributes) { { id: 2, name: '' } }
@@ -15,35 +17,51 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe 'GET /show' do
-    it 'renders a successful response' do
-      get :show, params: { id: topic.id }
-      expect(response).to be_successful
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'renders a successful response' do
+        get :show, params: { id: topic.id }
+        expect(response).to be_successful
+      end
     end
   end
 
   describe 'GET /new' do
-    it 'renders a successful response' do
-      get :new
-      expect(response).to be_successful
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'renders a successful response' do
+        get :new
+        expect(response).to be_successful
+      end
     end
   end
 
   describe 'GET /edit' do
-    it 'render a successful response' do
-      get :edit, params: { id: topic.id, name: 'new_name' }
-      expect(response).to be_successful
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'render a successful response' do
+        get :edit, params: { id: topic.id, name: 'new_name' }
+        expect(response).to be_successful
+      end
     end
   end
 
   describe 'POST /create' do
-    context 'with valid parameters' do
+    context 'with valid parameters for logged user' do
+      login_simple
+
       subject(:create_action) { post :create, params: { topic: valid_attributes } }
 
       it { expect { create_action }.to change(Topic, :count).by(1) }
       it { expect(create_action).to redirect_to(topic_url(Topic.last)) }
     end
 
-    context 'with invalid parameters' do
+    context 'with invalid parameters for logged user' do
+      login_simple
+
       subject(:create_action) { post :create, params: { topic: invalid_attributes } }
 
       it { expect { create_action }.to change(Topic, :count).by(0) }
@@ -56,7 +74,9 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe 'PATCH /update' do
-    context 'with valid parameters' do
+    context 'with valid parameters for admin user' do
+      login_admin
+
       let(:new_attributes) { { name: 'new_test_name' } }
 
       it 'updates the requested topic' do
@@ -72,7 +92,9 @@ RSpec.describe TopicsController, type: :controller do
       end
     end
 
-    context 'with invalid parameters' do
+    context 'with invalid parameters for admin user' do
+      login_admin
+
       it "renders a successful response (i.e. to display the 'edit' template)" do
         patch :update, params: { id: topic.id, topic: invalid_attributes }
         expect(response).to be_successful
@@ -81,11 +103,15 @@ RSpec.describe TopicsController, type: :controller do
   end
 
   describe 'DELETE /destroy' do
-    subject(:delete_action) { delete :destroy, params: params }
+    context 'when user with role "admin" is logged' do
+      login_admin
 
-    let(:params) { { id: topic.id } }
+      subject(:delete_action) { delete :destroy, params: params }
 
-    it { expect { delete_action }.to change(Topic, :count).by(-1) }
-    it { expect(delete_action).to redirect_to(topics_url) }
+      let(:params) { { id: topic.id } }
+
+      it { expect { delete_action }.to change(Topic, :count).by(-1) }
+      it { expect(delete_action).to redirect_to(topics_url) }
+    end
   end
 end

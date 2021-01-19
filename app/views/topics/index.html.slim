@@ -5,8 +5,9 @@ container
     .row
       .col.s6
         h5 All topics
-      .col.s6
-        h5.right= link_to 'Create new topic', new_topic_path, class: 'link-as-button'
+      - if policy(:topic).new?
+        .col.s6
+          h5.right= link_to 'Create new topic', new_topic_path, class: 'link-as-button'
   table.striped
     thead
       tr
@@ -16,8 +17,10 @@ container
         tr
           td= topic.name
           td= link_to 'Show', topic_path(topic), class: 'link-as-button'
-          td= link_to 'Edit', edit_topic_path(topic), class: 'link-as-button'
-          td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
+          - if policy(:topic).edit?
+            td= link_to 'Edit', edit_topic_path(topic), class: 'link-as-button'
+          - if policy(:topic).destroy?
+            td= link_to 'Destroy', topic, method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
 
   .center
     = paginate @topics

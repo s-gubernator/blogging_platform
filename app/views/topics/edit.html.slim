@@ -1,5 +1,5 @@
 container
   center
-    h5= "Edit topic '#{@topic.name}'"
+    h5= "Edit '#{@topic.name}'"
     = render 'form', topic: @topic
-    = link_to 'Back', topics_path
+    = link_to 'Back', topics_path, class: 'link-as-button-big'

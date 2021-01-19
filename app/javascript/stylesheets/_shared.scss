@@ -65,3 +65,9 @@
     color: $teal;
   }
 }
+
+.zero-bottom-space {
+  .row {
+    margin-bottom: 0em;
+  }
+}

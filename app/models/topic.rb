@@ -13,7 +13,7 @@ class Topic < ApplicationRecord
   PREDEFINED_NAMES = %w[education fashion finance food lifestyle movies music politics sports travel].freeze
   TOPICS_PER_PAGE = 10
 
-  has_many :atricles, dependent: :destroy
+  has_many :articles, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 255 }
 

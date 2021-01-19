@@ -34,5 +34,11 @@ FactoryBot.define do
     after(:build) do |user|
       user.email ||= "#{user.first_name}.#{user.last_name}@example.com".downcase.gsub(/['‘’]/, '_')
     end
+
+    factory :user_with_article do
+      after(:create) do |user|
+        create(:article, user_id: user.id)
+      end
+    end
   end
 end

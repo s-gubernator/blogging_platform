@@ -15,9 +15,8 @@
 FactoryBot.define do
   factory :article do
     title { Faker::Lorem.word }
-    content { Faker::Lorem.paragraph }
+    content { Faker::Lorem.paragraph(sentence_count: 5) }
 
     association :topic
-    author factory: :user
   end
 end

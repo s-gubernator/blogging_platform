@@ -2,7 +2,7 @@
 User.destroy_all
 
 p 'Start users generating...'
-FactoryBot.create_list(:user, 20)
+FactoryBot.create_list(:user_with_article, 20)
 FactoryBot.create_list(:user, 5, :admin)
 
 p '...Finish users generating'

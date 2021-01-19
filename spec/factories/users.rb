@@ -22,7 +22,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 FactoryBot.define do
-  factory :user do
+  factory :user, aliases: %i[author] do
     first_name { Faker::Name.unique.first_name }
     last_name { Faker::Name.unique.last_name }
     password { Faker::Internet.password }

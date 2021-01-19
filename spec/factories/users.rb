@@ -22,7 +22,7 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 FactoryBot.define do
-  factory :user, aliases: %i[author] do
+  factory :user do
     first_name { Faker::Name.unique.first_name }
     last_name { Faker::Name.unique.last_name }
     password { Faker::Internet.password }
@@ -35,9 +35,13 @@ FactoryBot.define do
       user.email ||= "#{user.first_name}.#{user.last_name}@example.com".downcase.gsub(/['‘’]/, '_')
     end
 
-    factory :user_with_article do
-      after(:create) do |user|
-        create(:article, user_id: user.id)
+    factory :user_with_articles do
+      transient do
+        articles_count { 5 }
+      end
+
+      after(:create) do |user, evaluator|
+        create_list(:article, evaluator.articles_count, user_id: user.id)
       end
     end
   end

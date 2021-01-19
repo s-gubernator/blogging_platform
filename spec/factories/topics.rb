@@ -11,6 +11,6 @@
 #
 FactoryBot.define do
   factory :topic do
-    name { Faker::Lorem.word }
+    name { Topic::PREDEFINED_NAMES.sample }
   end
 end

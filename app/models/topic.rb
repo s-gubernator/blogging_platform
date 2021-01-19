@@ -10,7 +10,8 @@
 #  updated_at :datetime         not null
 #
 class Topic < ApplicationRecord
-  PREDEFINED_NAMES = %w[education fashion finance food lifestyle movies music politics sports travel].freeze
+  PREDEFINED_NAMES = %w(education fashion finance food lifestyle movies music politics sports travel)
+
   TOPICS_PER_PAGE = 10
 
   has_many :articles, dependent: :destroy

@@ -146,7 +146,7 @@ RSpec.describe Administration::TopicsController, type: :controller do
       it 'updates the requested topic' do
         patch :update, params: params
         topic.reload
-        expect(controller.notice).to eq('Topic was successfully updated.')
+        expect(topic.name).to eq('new_test_name')
       end
 
       it 'redirects to the topic' do
@@ -159,9 +159,9 @@ RSpec.describe Administration::TopicsController, type: :controller do
     context 'with invalid parameters for admin user' do
       login_admin
 
-      it "renders a successful response (i.e. to display the 'edit' template)" do
+      it 'return a non-empty list of errors' do
         patch :update, params: { id: topic.id, topic: invalid_attributes }
-        expect(response).to be_successful
+        expect(assigns(:topic).errors.full_messages).to eq(["Name can't be blank"])
       end
     end
   end

@@ -4,12 +4,7 @@
 .container
   = render 'shared/notice'
 
-  .zero-bottom-space
-    .row
-      .col.s6
-        h5 All topics
-      .col.s6
-        h5.right= link_to 'Create new topic', new_administration_topic_path, class: 'link-as-button'
+  h5 All topics
   table.striped
     thead
       tr
@@ -24,3 +19,5 @@
 
   .center
     = paginate @topics
+
+  h5= link_to 'Create new topic', new_administration_topic_path, class: 'link-as-button'

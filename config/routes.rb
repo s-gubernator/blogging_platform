@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     root 'dashboard#home'
 
     resources :users, only: %i(index destroy)
-
     resources :topics
   end
 

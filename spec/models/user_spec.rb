@@ -33,6 +33,10 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'associations' do
+    it { expect(user).to have_many(:articles) }
+  end
+
   describe 'user validations' do
     subject { user }
 

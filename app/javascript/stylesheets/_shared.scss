@@ -1,3 +1,8 @@
+.sidenav {
+  background-color: $cian;
+  width: 20em;
+}
+
 #toast-container {
   position: fixed !important;
   top: 4em !important;
@@ -36,7 +41,7 @@
   @extend .default-card;
   margin: 0em;
   padding: 1em;
-  
+
   .btn {
     margin-top: 1.5em;
     width: 100%;
@@ -75,6 +80,25 @@
 
   a:hover {
     color: $teal;
+  }
+}
+
+.highlighted {
+  li.active {
+    background-color: $light-cian !important;
+
+    a {
+      color: $teal;
+
+      &:hover {
+        color: $black;
+        background: $teal;
+      }
+    }
+  }
+
+  a:hover {
+    color: $black;
   }
 }
 

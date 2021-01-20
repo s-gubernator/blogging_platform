@@ -1,0 +1,14 @@
+- content_for(:title, 'New topic')
+- navigation_add('All topics', administration_topics_path)
+
+.container
+  center
+    h5 Create new topic
+    .row.default-card.form-card.z-depth-1
+      = simple_form_for(@topic, url: administration_topics_path) do |f|
+        .pink-text
+          = f.error_notification
+        .input_field.col.s6
+          = f.input :name, placeholder: "Topic name", label: false, autofocus: true
+        .field.col.s6
+          = f.button :submit, class: 'btn-zero-top-space'

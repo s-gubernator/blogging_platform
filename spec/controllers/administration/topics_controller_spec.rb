@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe TopicsController, type: :controller do
+RSpec.describe Administration::TopicsController, type: :controller do
   render_views
 
   let!(:topic) { create(:topic) }

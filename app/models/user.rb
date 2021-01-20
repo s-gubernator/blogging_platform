@@ -31,7 +31,7 @@ class User < ApplicationRecord
                    scope: :having_role,
                    predicates: { prefix: true }
 
-  has_many :articles, dependent: :destroy, inverse_of: 'author'
+  has_many :articles, dependent: :nullify, inverse_of: 'author'
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }

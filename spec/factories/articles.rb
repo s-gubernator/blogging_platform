@@ -18,5 +18,6 @@ FactoryBot.define do
     content { Faker::Lorem.paragraph(sentence_count: 5) }
 
     association :topic
+    association :author, factory: :user
   end
 end

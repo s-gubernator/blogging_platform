@@ -159,9 +159,9 @@ RSpec.describe Administration::TopicsController, type: :controller do
     context 'with invalid parameters for admin user' do
       login_admin
 
-      it 'return a non-empty list of errors' do
+      it 'returns an error' do
         patch :update, params: { id: topic.id, topic: invalid_attributes }
-        expect(assigns(:topic).errors.full_messages).to eq(["Name can't be blank"])
+        expect(assigns(:topic).errors.full_messages.first).to eq("Name can't be blank")
       end
     end
   end

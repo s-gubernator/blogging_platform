@@ -10,29 +10,59 @@ RSpec.describe Administration::TopicsController, type: :controller do
   let(:invalid_attributes) { { id: 2, name: '' } }
 
   describe 'GET /index' do
-    it 'renders a successful response' do
-      get :index
-      expect(response).to be_successful
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns unauthorized http status' do
+        get :index
+        expect(response).to redirect_to(unauthorized_url)
+      end
+    end
+
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'renders a successful response' do
+        get :index
+        expect(response).to be_successful
+      end
     end
   end
 
   describe 'GET /show' do
-    it 'renders a successful response' do
-      get :show, params: { id: topic.id }
-      expect(response).to be_successful
+    let(:params) { { id: topic.id } }
+
+    context 'when user with role "simple" is logged' do
+      login_simple
+
+      it 'returns unauthorized http status' do
+        get :show, params: params
+        expect(response).to redirect_to(unauthorized_url)
+      end
+    end
+
+    context 'when user with role "admin" is logged' do
+      login_admin
+
+      it 'renders a successful response' do
+        get :show, params: params
+        expect(response).to be_successful
+      end
     end
   end
 
   describe 'GET /new' do
-    context 'when visitor go to page' do
+    context 'when user with role "simple" is logged' do
+      login_simple
+
       it 'returns unauthorized http status' do
         get :new
         expect(response).to redirect_to(unauthorized_url)
       end
     end
 
-    context 'when user with role "simple" is logged' do
-      login_simple
+    context 'when user with role "admin" is logged' do
+      login_admin
 
       it 'renders a successful response' do
         get :new
@@ -44,24 +74,26 @@ RSpec.describe Administration::TopicsController, type: :controller do
   describe 'POST /create' do
     let(:params) { { topic: valid_attributes } }
 
-    context 'when visitor go to page' do
+    context 'when user with role "simple" is logged' do
+      login_simple
+
       it 'returns unauthorized http status' do
         post :create, params: params
         expect(response).to redirect_to(unauthorized_url)
       end
     end
 
-    context 'with valid parameters for logged user' do
-      login_simple
+    context 'with valid parameters for admin user' do
+      login_admin
 
       subject(:create_action) { post :create, params: params }
 
       it { expect { create_action }.to change(Topic, :count).by(1) }
-      it { expect(create_action).to redirect_to(topic_url(Topic.last)) }
+      it { expect(create_action).to redirect_to(administration_topic_url(Topic.last)) }
     end
 
-    context 'with invalid parameters for logged user' do
-      login_simple
+    context 'with invalid parameters for admin user' do
+      login_admin
 
       subject(:create_action) { post :create, params: { topic: invalid_attributes } }
 
@@ -120,7 +152,7 @@ RSpec.describe Administration::TopicsController, type: :controller do
       it 'redirects to the topic' do
         patch :update, params: params
         topic.reload
-        expect(response).to redirect_to(topic_url(topic))
+        expect(response).to redirect_to(administration_topic_url(topic))
       end
     end
 
@@ -152,7 +184,7 @@ RSpec.describe Administration::TopicsController, type: :controller do
       subject(:delete_action) { delete :destroy, params: params }
 
       it { expect { delete_action }.to change(Topic, :count).by(-1) }
-      it { expect(delete_action).to redirect_to(topics_url) }
+      it { expect(delete_action).to redirect_to(administration_topics_url) }
     end
   end
 end

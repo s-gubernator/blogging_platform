@@ -9,8 +9,12 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_topics_on_name  (name) UNIQUE
+#
 FactoryBot.define do
   factory :topic do
-    name { Topic::PREDEFINED_NAMES.sample }
+    name { Faker::Lorem.unique.word }
   end
 end

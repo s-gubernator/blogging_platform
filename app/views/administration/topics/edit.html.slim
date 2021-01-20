@@ -1,0 +1,7 @@
+- content_for(:title, 'Edit topic')
+- navigation_add('All topics', administration_topics_path)
+
+.container
+  center
+    h5= "Edit '#{@topic.name}'"
+    = render 'form', topic: @topic, url: administration_topic_path(@topic)

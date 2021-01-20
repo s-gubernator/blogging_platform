@@ -6,7 +6,6 @@ nav.navbar-fixed.cyan.darken-4
       .brand-logo
         = link_to 'Logo', root_path
       ul.right.hide-on-med-and-down
-        li= link_to "All topics", topics_path
         - if current_user
           - if policy(:dashboard).home?
             li= link_to "Admin Area", administration_root_path

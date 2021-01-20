@@ -9,14 +9,16 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_topics_on_name  (name) UNIQUE
+#
 class Topic < ApplicationRecord
-  PREDEFINED_NAMES = %w(education fashion finance food lifestyle movies music politics sports travel)
-
   TOPICS_PER_PAGE = 10
 
-  has_many :articles, dependent: :destroy
-
-  validates :name, presence: true, length: { maximum: 255 }
+  validates :name, presence: true,
+                   uniqueness: { case_sensitive: false },
+                   length: { maximum: 255 }
 
   paginates_per(TOPICS_PER_PAGE)
 end

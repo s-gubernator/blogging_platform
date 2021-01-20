@@ -5,9 +5,9 @@ nav.navbar-fixed.cyan.darken-4
     .nav-wrapper
       .brand-logo
         = link_to 'Logo', root_path
-      ul.right.hide-on-med-and-down
+      ul.right.hide-on-med-and-down.highlighted
         li= main_nav_link('Dashboard', administration_root_path)
         li= main_nav_link('Users', administration_users_path)
-        li= main_nav_link("All topics", topics_path)
+        li= main_nav_link("Topics", administration_topics_path)
 
 = render 'layouts/administration/mobile_menu'

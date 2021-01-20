@@ -2,15 +2,15 @@
 
 class TopicPolicy < ApplicationPolicy
   def index?
-    true
+    user&.role_admin?
   end
 
   def show?
-    true
+    user&.role_admin?
   end
 
   def create?
-    user.present?
+    user&.role_admin?
   end
 
   def new?

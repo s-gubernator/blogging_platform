@@ -9,6 +9,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_topics_on_name  (name) UNIQUE
+#
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
@@ -22,6 +26,7 @@ RSpec.describe Topic, type: :model do
 
     describe 'topic validation' do
       it { expect(topic).to validate_presence_of(:name) }
+      it { expect(topic).to validate_uniqueness_of(:name).ignoring_case_sensitivity }
       it { expect(topic).to validate_length_of(:name).is_at_most(255) }
     end
   end

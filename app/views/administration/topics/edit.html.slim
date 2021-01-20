@@ -4,4 +4,4 @@
 .container
   center
     h5= "Edit '#{@topic.name}'"
-    = render 'form', url: administration_topic_path(@topic)
+    = render 'form', topic: @topic, url: administration_topic_path(@topic)

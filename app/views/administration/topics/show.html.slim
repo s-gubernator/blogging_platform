@@ -4,8 +4,5 @@
 .container
   = render 'shared/notice'
 
-  .zero-bottom-space
-    .row
-      h5= "Topic: #{@topic.name}"
-      .col.s6
-        h5= link_to 'Edit', edit_administration_topic_path(@topic), class: 'link-as-button'
+  h5= "Topic: #{@topic.name}"
+  h5= link_to 'Edit', edit_administration_topic_path(@topic), class: 'link-as-button'

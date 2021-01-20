@@ -102,8 +102,28 @@
   }
 }
 
-.zero-bottom-space {
-  .row {
-    margin-bottom: 0em;
+.link-as-button {
+  font-size: 0.8em;
+  background-color: $teal;
+  color: $light-cian;
+  padding: 0.5em 1em;
+  border-radius: 0.4em;
+
+  a:hover {
+    background-color: $dark-cian;
   }
+}
+
+a.link-as-button:hover {
+  background-color: $dark-cian;
+  color: $light-cian;
+}
+
+.link-as-button-big {
+  @extend .link-as-button;
+  font-size: 1em;
+}
+
+a.link-as-button-big:hover {
+  background-color: $blue-green;
 }

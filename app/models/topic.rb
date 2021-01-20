@@ -15,10 +15,10 @@
 #
 class Topic < ApplicationRecord
   TOPICS_PER_PAGE = 10
-  
+
   validates :name, presence: true,
                    uniqueness: { case_sensitive: false },
                    length: { maximum: 255 }
-  
+
   paginates_per(TOPICS_PER_PAGE)
 end

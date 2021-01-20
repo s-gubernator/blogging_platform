@@ -1,0 +1,129 @@
+.sidenav {
+  background-color: $cian;
+  width: 20em;
+}
+
+#toast-container {
+  position: fixed !important;
+  top: 4em !important;
+  left: 11em !important;
+}
+
+.toast {
+  top: 2em;
+  width: 90%;
+  clear: both;
+  margin-top: 1em;
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  min-height: 3em;
+  line-height: 1.5em;
+  word-break: keep-all;
+  background-color: $cosmic-latte;
+  padding: 0.5em 2em;
+  font-size: 1.1em;
+  color: $black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.default-card {
+  margin: 2em;
+  padding: 1em 2em;
+  border: 0.1em solid $light-grey;
+  background-color: $white;
+  min-width: 50%;
+}
+
+.search-form-card {
+  @extend .default-card;
+  margin: 0em;
+  padding: 1em;
+
+  .btn {
+    margin-top: 1.5em;
+    width: 100%;
+    font-size: 1.2em;
+    text-transform: none;
+  }
+
+  .btn-zero-top-space {
+    @extend .btn;
+    margin-top: 0em;
+  }
+}
+
+
+.sort_link {
+  color: $slategray;
+  text-decoration: underline;
+}
+
+.dropdown-content {
+  li {
+    line-height: 1em;
+    padding: 0em;
+  }
+}
+
+.pagination {
+  li.active {
+    background-color: $light-cian !important;
+    border-bottom: 0.2em solid $teal;
+
+    a {
+      color: $teal;
+    }
+  }
+
+  a:hover {
+    color: $teal;
+  }
+}
+
+.highlighted {
+  li.active {
+    background-color: $light-cian !important;
+
+    a {
+      color: $teal;
+
+      &:hover {
+        color: $black;
+        background: $teal;
+      }
+    }
+  }
+
+  a:hover {
+    color: $black;
+  }
+}
+
+.link-as-button {
+  font-size: 0.8em;
+  background-color: $teal;
+  color: $light-cian;
+  padding: 0.5em 1em;
+  border-radius: 0.4em;
+
+  a:hover {
+    background-color: $dark-cian;
+  }
+}
+
+a.link-as-button:hover {
+  background-color: $dark-cian;
+  color: $light-cian;
+}
+
+.link-as-button-big {
+  @extend .link-as-button;
+  font-size: 1em;
+}
+
+a.link-as-button-big:hover {
+  background-color: $blue-green;
+}

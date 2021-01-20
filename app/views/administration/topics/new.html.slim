@@ -1,0 +1,7 @@
+- content_for(:title, 'New topic')
+- navigation_add('All topics', administration_topics_path)
+
+.container
+  center
+    h5 Create new topic
+    = render 'form', topic: @topic, url: administration_topics_path

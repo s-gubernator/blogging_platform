@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   namespace :administration do
     root 'dashboard#home'
 
-    resources :users, only: %i[index destroy]
+    resources :users, only: %i(index destroy)
+    resources :topics
   end
 
   match '/401', to: 'errors#unauthorized', via: :all, as: :unauthorized

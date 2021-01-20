@@ -69,40 +69,6 @@ table.striped > tbody > tr:nth-child(odd) {
   background-color: $cian;
 }
 
-.link-as-button {
-  font-size: 0.8em;
-  background-color: $slategray;
-  color: $white;
-  padding: 0.5em 1em;
-  border-radius: 0.4em;
-
-  a:hover {
-    background-color: $dark-cian;
-  }
-}
-
-a.link-as-button:hover {
-  background-color: $dark-cian;
-}
-
-.link-as-button-big {
-  @extend .link-as-button;
-  font-size: 1em;
-  background-color: $teal;
-}
-
-a.link-as-button-big:hover {
-  background-color: $blue-green;
-}
-
-.default-card {
-  margin: 2em;
-  padding: 1em 2em;
-  border: 0.1em solid $light-grey;
-  background-color: $white;
-  min-width: 50%;
-}
-
 .field_with_errors {
   input:not([type]),
   input[type=text]:not(.browser-default),

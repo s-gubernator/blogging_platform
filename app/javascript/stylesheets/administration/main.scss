@@ -13,18 +13,6 @@ body {
   flex: 1;
 }
 
-li.active {
-  background-color: $light-cian !important;
-
-  a {
-    color: $black;
-  }
-
-  a:hover {
-    color: $dark-cian;
-  }
-}
-
 .admin-breadcrumb {
   margin: 1em 0em;
 }
@@ -40,65 +28,5 @@ li.active {
 
   &:last-child {
     color: $slategray;
-  }
-}
-
-#toast-container {
-  position: fixed !important;
-  top: 4em !important;
-  left: 11em !important;
-}
-
-.toast {
-  top: 2em;
-  width: 90%;
-  clear: both;
-  margin-top: 1em;
-  position: relative;
-  max-width: 100%;
-  height: auto;
-  min-height: 3em;
-  line-height: 1.5em;
-  word-break: keep-all;
-  background-color: $cosmic-latte;
-  padding: 0.5em 2em;
-  font-size: 1.1em;
-  color: $black;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.sort_link {
-  color: $slategray;
-  text-decoration: underline;
-}
-
-.dropdown-content {
-  li {
-    line-height: 1em;
-    padding: 0em;
-  }
-}
-
-.search-form-card {
-  margin: 0em;
-  padding: 1em;
-  border: 0.1em solid $light-grey;
-  background-color: $white;
-
-  .btn {
-    margin-top: 1.5em;
-    width: 100%;
-    font-size: 1.2em;
-    text-transform: none;
-  }
-}
-
-.pagination {
-  li.active {
-    a {
-      color: $dark-cian;
-    }
   }
 }

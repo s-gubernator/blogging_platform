@@ -2,8 +2,7 @@
 - navigation_add('Dashboard', administration_root_path)
 
 .container
-  - if notice.present?
-    = tag.div(id: 'notice', data: { notice: notice })
+  = render 'shared/notice'
 
   = render 'index_search_form'
 

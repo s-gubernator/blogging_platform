@@ -1,0 +1,23 @@
+- content_for(:title, 'All topics')
+- navigation_add('Dashboard', administration_root_path)
+
+.container
+  = render 'shared/notice'
+
+  h5 All topics
+  table.striped
+    thead
+      tr
+        th colspan="4"
+    tbody
+      - @topics.each do |topic|
+        tr
+          td= topic.name
+          td= link_to 'Show', administration_topic_path(topic), class: 'link-as-button'
+          td= link_to 'Edit', edit_administration_topic_path(topic), class: 'link-as-button'
+          td= link_to 'Destroy', administration_topic_path(topic), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
+
+  .center
+    = paginate @topics
+
+  h5= link_to 'Create new topic', new_administration_topic_path, class: 'link-as-button'

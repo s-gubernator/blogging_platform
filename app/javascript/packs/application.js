@@ -8,7 +8,4 @@ import "stylesheets/application"
 // const imagePath = (name) => images(name, true)
 
 require("@rails/ujs").start()
-
-document.addEventListener('DOMContentLoaded', () => {
-  M.AutoInit();
-});
+require("packs/shared")

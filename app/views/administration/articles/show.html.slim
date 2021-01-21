@@ -2,8 +2,17 @@
 - navigation_add('All articles', administration_articles_path)
 
 .container
-  center
-    h5= @article.title
-    p.default-card.form-card.z-depth-1
-      = @article.content
-    = "Author: #{@article.author.full_name}"
+  table
+    tbody
+      tr
+        th Title
+        td= @article.title
+      tr
+        th Content
+        td= @article.content
+      tr
+        th Topic
+        td= @article.topic.name
+      tr
+        th Author
+        td= author_name(@article)

@@ -8,14 +8,16 @@
       tr
         th Title
         th Content
+        th Topic
         th Author
         th
     tbody
       - @articles.each do |article|
         tr
           td= article.title
-          td= article.content
-          td= article.author.full_name
+          td= truncate(article.content, length: 70)
+          td= article.topic.name
+          td= author_name(article)
           td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
   .center
     = paginate @articles

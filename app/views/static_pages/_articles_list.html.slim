@@ -3,10 +3,11 @@
     table
       tbody
         - @articles.each do |article|
-          tr
+          tr.card
             td
-              h5= article.title
-              p= truncate(article.content, length: 70)
-            td= article.topic.name
-            td= author_name(article)
+              .card-title= article.title
+              .card-content= truncate(article.content, length: 70)
             td= article.created_at.strftime('%d %b %Y')
+            td
+              = link_to article_path(article), class: 'material-icon-link' do
+                i.material-icons send

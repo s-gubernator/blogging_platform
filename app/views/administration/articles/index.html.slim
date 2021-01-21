@@ -2,8 +2,6 @@
 - navigation_add('Dashboard', administration_root_path)
 
 .container
-  = render 'shared/notice'
-
   h5 All articles
   table.striped
     thead
@@ -11,6 +9,7 @@
         th Title
         th Content
         th Author
+        th
     tbody
       - @articles.each do |article|
         tr

@@ -4,6 +4,6 @@ class StaticPagesController < ApplicationController
   skip_after_action :verify_authorized
 
   def home
-    @articles = Article.order("created_at DESC").page(params[:page])
+    @articles = Article.last(5)
   end
 end

@@ -1,8 +1,10 @@
 container
   = render 'shared/notice'
-  
+
   - if current_user
     h1= "Hello, #{current_user.full_name}"
     p= "Your role is #{current_user.role}"
   - else
     h1 Hello in "Blogging Platform"
+
+  = render template: 'articles/index'

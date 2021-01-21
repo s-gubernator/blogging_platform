@@ -3,5 +3,7 @@
 class StaticPagesController < ApplicationController
   skip_after_action :verify_authorized
 
-  def home; end
+  def home
+    @articles = Article.order("created_at DESC").page(params[:page])
+  end
 end

@@ -1,0 +1,9 @@
+- content_for(:title, 'Show article')
+- navigation_add('All articles', administration_articles_path)
+
+.container
+  center
+    h5= @article.title
+    p.default-card.form-card.z-depth-1
+      = @article.content
+    = "Author: #{@article.author.full_name}"

@@ -1,0 +1,22 @@
+- content_for(:title, 'All articles')
+- navigation_add('Dashboard', administration_root_path)
+
+.container
+  = render 'shared/notice'
+
+  h5 All articles
+  table.striped
+    thead
+      tr
+        th Title
+        th Content
+        th Author
+    tbody
+      - @articles.each do |article|
+        tr
+          td= article.title
+          td= article.content
+          td= article.author.full_name
+          td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
+  .center
+    = paginate @articles

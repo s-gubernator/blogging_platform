@@ -1,5 +1,5 @@
 - content_for(:title, 'Show topic')
-- navigation_add('All topics', administration_topics_path)
+- add_to_breadcrumbs(topic_breadcrumb_links)
 
 .container
   = render 'shared/notice'

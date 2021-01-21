@@ -20,4 +20,8 @@ module NavigationHelper
   def render_breadcrumbs
     render partial: 'shared/breadcrumbs', locals: { nav_items: nav_items }
   end
+
+  def add_to_breadcrumbs(links)
+    links.each { |key, value| navigation_add(key, value) }
+  end
 end

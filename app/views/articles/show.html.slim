@@ -2,8 +2,8 @@
   .article-topic
     = @article.topic.name
   .article-title
-    h3= @article.title
+    = @article.title
   .article-author
     = author_name(@article)
   .article-content
-    .flow-text= @article.content
+    = @article.content

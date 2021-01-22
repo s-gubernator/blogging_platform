@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
   skip_after_action :verify_authorized
 
   before_action :authenticate_user!, except: %i(show)
-  before_action :correct_user, only: %i(update destroy)
+  before_action :correct_user, only: %i(edit update destroy)
   before_action :set_article, only: %i(show edit update destroy)
 
   def index
@@ -53,6 +53,6 @@ class ArticlesController < ApplicationController
 
   def correct_user
     @article = current_user.articles.find_by(id: params[:id])
-    redirect_to root_url if @article.nil?
+    redirect_to root_url, notice: 'You have no permission to perform this action' if @article.nil?
   end
 end

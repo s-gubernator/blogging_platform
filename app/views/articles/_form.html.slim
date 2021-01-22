@@ -3,10 +3,10 @@
     .pink-text
       = f.error_notification
     .input_field
-      = f.input :title, placeholder: 'Title', label: false, autofocus: true
+      = f.input :title, autofocus: true
     .input_field
-      = f.input :content, placeholder: 'Content', label: false, autofocus: true
+      = f.input :content, autofocus: true
     .input_field
-      = f.association :topic, collection: Topic.pluck(:id), placeholder: 'Content', label: false
+      = f.association :topic, collection: Topic.order(:name), value_method: :id
     .field
       = f.button :submit, class: 'btn-zero-top-space'

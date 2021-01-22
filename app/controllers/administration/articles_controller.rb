@@ -6,7 +6,7 @@ module Administration
 
     def index
       authorize Article
-      @articles = Article.all.page(params[:page])
+      @articles = Article.order('created_at DESC').page(params[:page])
     end
 
     def show

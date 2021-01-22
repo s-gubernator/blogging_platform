@@ -1,0 +1,8 @@
+h3= "Hello, #{current_user.full_name}"
+p= "Your role is #{current_user.role}"
+
+.row
+  .col.s6
+    h5= link_to 'List my articles', articles_path, class: 'link-as-button'
+  .col.s6
+    h5= link_to 'Create new article', new_article_path, class: 'link-as-button'

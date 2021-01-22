@@ -1,4 +1,7 @@
 .container
+  - if current_user
+    h5= render 'shared/notice'
+
   .article-topic
     = @article.topic.name
   .article-title
@@ -7,3 +10,6 @@
     = author_name(@article)
   .article-content
     = @article.content
+
+- if current_user
+  h5= link_to 'All articles', articles_path, class: 'link-as-button'

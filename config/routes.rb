@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   match '/422', to: 'errors#unprocessable_entity', via: :all
   match '/500', to: 'errors#internal_server_error', via: :all
 
-  resources :articles, only: %i(show)
+  resources :articles
 end

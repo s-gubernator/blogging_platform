@@ -16,7 +16,7 @@
 class Topic < ApplicationRecord
   TOPICS_PER_PAGE = 10
 
-  has_many :articles, dependent: :destroy
+  has_many :articles, dependent: :nullify
 
   validates :name, presence: true,
                    uniqueness: { case_sensitive: false },

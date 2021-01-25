@@ -30,3 +30,13 @@ body {
     color: $slategray;
   }
 }
+
+.success {
+  background: $white;
+  color: $seagreen;
+}
+
+.danger {
+  background: $white;
+  color: $pink;
+}

@@ -12,6 +12,14 @@ module ArticleHelper
     }
   end
 
+  def status_icon(article)
+     article.approved ?  'check' : 'remove'
+  end
+
+  def status_class(article)
+    article.approved ?  'success' : 'danger'
+  end
+
   private
 
   def helpers

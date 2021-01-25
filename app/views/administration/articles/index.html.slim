@@ -4,16 +4,19 @@
 .container
   = render 'index_search_form'
 
-  table.striped
+  table
     thead
       tr
+        th
         th= sort_link(@q, :topic_name)
         th= sort_link(@q, :title)
         th= sort_link(@q, :author_first_name_or_author_last_name)
         th
     tbody
       - @articles.each do |article|
-        tr
+        tr class="#{status_class(article)}"
+          td
+            i.material-icons= status_icon(article)
           td= article.topic.name
           td= article.title
           td= author_name(article)

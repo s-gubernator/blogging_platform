@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
     resources :users, only: %i(index destroy)
     resources :topics
-    resources :articles, only: %i(index show)
+    resources :articles, only: %i(index show) do
+      patch :approve_multiple, on: :collection
+    end
   end
 
   match '/401', to: 'errors#unauthorized', via: :all, as: :unauthorized

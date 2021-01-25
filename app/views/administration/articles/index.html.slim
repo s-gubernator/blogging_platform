@@ -2,24 +2,31 @@
 - navigation_add('Dashboard', administration_root_path)
 
 .container
+  = render 'shared/notice'
+
   = render 'index_search_form'
 
-  table
-    thead
-      tr
-        th
-        th= sort_link(@q, :topic_name)
-        th= sort_link(@q, :title)
-        th= sort_link(@q, :author_first_name_or_author_last_name)
-        th
-    tbody
-      - @articles.each do |article|
-        tr class="#{status_class(article)}"
-          td
-            i.material-icons= status_icon(article)
-          td= article.topic.name
-          td= article.title
-          td= author_name(article)
-          td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
+  = form_tag(approve_multiple_administration_articles_url, method: :patch) do
+    table
+      thead
+        tr
+          th
+          th= sort_link(@q, :topic_name)
+          th= sort_link(@q, :title)
+          th= sort_link(@q, :author_first_name_or_author_last_name)
+          th
+      tbody
+        - @articles.each do |article|
+          tr class="#{status_class(article)}"
+            td
+              label
+                = check_box_tag('article_ids[]', article.id, article.approved)
+                span
+            td= article.topic.name
+            td= article.title
+            td= author_name(article)
+            td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
+    = submit_tag 'Approve Checked', class: 'btn'
+
   .center
     = paginate @articles

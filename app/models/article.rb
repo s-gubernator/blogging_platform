@@ -14,7 +14,7 @@
 #
 class Article < ApplicationRecord
   ARTICLES_PER_PAGE = 15
-  
+
   belongs_to :topic, optional: true
   belongs_to :author, class_name: 'User', foreign_key: 'user_id', inverse_of: :articles, optional: true
 

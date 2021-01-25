@@ -1,0 +1,13 @@
+.row.search-form-card
+  = search_form_for @q, url: administration_articles_url, method: :get do |f|
+    .input_field.col.s3
+      = f.label :topic_name_eq, 'Topic'
+      = f.select :topic_name_eq, options_for_select(Topic.pluck(:name), @q.topic_name_eq), include_blank: true
+    .input_field.col.s3
+      = f.label :title_cont
+      = f.search_field :title_cont
+    .input_field.col.s3
+      = f.label :author_first_name_or_author_last_name_cont, 'Author'
+      = f.search_field :author_first_name_or_author_last_name_cont
+    .field.col.s3
+      = f.submit 'Search', class: "btn"

@@ -10,7 +10,7 @@
       = f.label :author_first_name_or_author_last_name_cont, 'Author'
       = f.search_field :author_first_name_or_author_last_name_cont
     .input_field.col.s3
-      = f.label :approved_eq, 'Author'
+      = f.label :approved_eq, 'Approved'
       = f.select :approved_eq, options_for_select([true, false], @q.approved_eq), include_blank: true
     .field.col.s3
-      = f.submit 'Search', class: "btn"
+      = f.submit 'Search', class: 'btn'

@@ -55,6 +55,11 @@
   }
 }
 
+.btn {
+  margin-top: 1em;
+  font-size: 1.2em;
+  text-transform: none;
+}
 
 .sort_link {
   color: $slategray;
@@ -105,7 +110,7 @@
 .link-as-button {
   font-size: 0.8em;
   background-color: $teal;
-  color: $light-cian;
+  color: $white;
   padding: 0.5em 1em;
   border-radius: 0.4em;
 

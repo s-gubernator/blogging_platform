@@ -18,8 +18,7 @@ module Administration
     def approve_multiple
       skip_authorization
 
-      binding.pry
-      @articles = Article.find(params[:article_ids])
+      @articles = Article.where(id: params[:article_ids])
       @articles.each do |article|
         article.update_attribute(:approved, true)
       end

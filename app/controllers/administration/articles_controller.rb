@@ -7,7 +7,7 @@ module Administration
     def index
       authorize Article
 
-      @q = Article.ransack(params[:q])
+      @q = Article.by_newest.ransack(params[:q])
       @articles = @q.result.includes(:topic, :author).page(params[:page])
     end
 

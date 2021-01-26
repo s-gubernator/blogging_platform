@@ -10,7 +10,7 @@
     table
       thead
         tr
-          th= sort_link(@q, :approved)
+          th= sort_link(@q, :approved, 'Approved?')
           th= sort_link(@q, :topic_name)
           th= sort_link(@q, :title)
           th= sort_link(@q, :author_first_name_or_author_last_name)
@@ -18,7 +18,7 @@
       tbody
         - @articles.each do |article|
           tr class="#{status_class(article)}"
-            td
+            td.spaced-left
               label
                 = check_box_tag('article_ids[]', article.id, article.approved)
                 span

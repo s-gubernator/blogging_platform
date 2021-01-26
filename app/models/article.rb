@@ -23,4 +23,16 @@ class Article < ApplicationRecord
   validates :content, presence: true
 
   paginates_per(ARTICLES_PER_PAGE)
+
+  def self.approve_all(ids)
+    where(id: ids).update_all(approved: true)
+  end
+
+  def approve
+    update_attribute(:approved, true)
+  end
+
+  def disapprove
+    update_attribute(:approved, false)
+  end
 end

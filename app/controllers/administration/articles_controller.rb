@@ -2,7 +2,7 @@
 
 module Administration
   class ArticlesController < Administration::BaseController
-    before_action :set_article, only: %i[show approve deapprove]
+    before_action :set_article, only: %i[show approve disapprove]
 
     def index
       authorize Article
@@ -18,26 +18,22 @@ module Administration
     def approve_multiple
       skip_authorization
 
-      @articles = Article.where(id: params[:article_ids])
-      @articles.each do |article|
-        article.update_attribute(:approved, true)
-      end
-
+      Article.approve_all(params[:article_ids])
       redirect_to administration_articles_url, notice: 'Articles approved'
     end
 
     def approve
       skip_authorization
 
-      @article.update_attribute(:approved, true)
-      redirect_to administration_articles_url, notice: 'Article approved.'
+      @article.approve
+      redirect_to administration_article_url(@article), notice: 'Article approved.'
     end
 
-    def deapprove
+    def disapprove
       skip_authorization
-      
-      @article.update_attribute(:approved, false)
-      redirect_to administration_articles_url, notice: 'Article deapproved.'
+
+      @article.disapprove
+      redirect_to administration_article_url(@article), notice: 'Article disapproved.'
     end
 
     private

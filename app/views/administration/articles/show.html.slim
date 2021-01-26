@@ -16,3 +16,8 @@
       tr
         th Author
         td= author_name(@article)
+
+  - if @article.approved
+    = render 'form', article: @article, url: deapprove_administration_article_url(@article), button_name: 'Deapprove'
+  - else
+    = render 'form', article: @article, url: approve_administration_article_url(@article), button_name: 'Approve'

@@ -8,12 +8,13 @@ require("@rails/ujs").start()
 require("packs/shared")
 
 document.addEventListener('DOMContentLoaded', () => {
-  let selectAll = document.getElementById('selectAll');
+  let selectAll = document.getElementById('select-all');
 
   selectAll.addEventListener('click', () => {
     let checkboxes = document.querySelectorAll('input[type=checkbox]');
-    for (let i = 0; i < checkboxes.length; i++) {
-     checkboxes[i].checked = true;
-    };
+    
+    checkboxes.forEach( (checkbox) => {
+      checkbox.checked = true;
+    });
   });
 });

@@ -29,8 +29,8 @@
         tr
           td
             label
-              input type='checkbox' id='selectAll'
-                span Check all
+              = check_box_tag 'select-all'
+              span Check all
           td colspan='4'
     = submit_tag 'Approve Checked', class: 'btn'
 

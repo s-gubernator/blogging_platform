@@ -26,6 +26,12 @@
             td= article.title
             td= author_name(article)
             td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
+        tr
+          td
+            label
+              input type='checkbox' id='selectAll'
+                span Check all
+          td colspan='4'
     = submit_tag 'Approve Checked', class: 'btn'
 
   .center

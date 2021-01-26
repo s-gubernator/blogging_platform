@@ -16,21 +16,21 @@ module Administration
     end
 
     def approve_multiple
-      skip_authorization
+      authorize Article, :approve_multiple?
 
       Article.approve_all(params[:article_ids])
       redirect_to administration_articles_url, notice: 'Articles approved'
     end
 
     def approve
-      skip_authorization
+      authorize @article, :approve?
 
       @article.approve
       redirect_to administration_article_url(@article), notice: 'Article approved.'
     end
 
     def disapprove
-      skip_authorization
+      authorize @article, :disapprove?
 
       @article.disapprove
       redirect_to administration_article_url(@article), notice: 'Article disapproved.'

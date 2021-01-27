@@ -41,4 +41,22 @@ RSpec.describe ArticleHelper do
       expect(topic_name(article)).to eq('uncategorized')
     end
   end
+
+  describe '#toggle_button_name' do
+    context 'when article approved' do
+      let(:article) { create(:article, approved: true) }
+
+      it 'returns "Disapprove" button name' do
+        expect(toggle_button_name(article.approved)).to eq('Disapprove')
+      end
+    end
+
+    context 'when article not approved' do
+      let(:article) { create(:article) }
+
+      it 'returns "Approve" button name' do
+        expect(toggle_button_name(article.approved)).to eq('Approve')
+      end
+    end
+  end
 end

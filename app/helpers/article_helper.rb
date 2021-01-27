@@ -24,8 +24,8 @@ module ArticleHelper
     [['Approved', true], ['Not Approved', false]]
   end
 
-  def toggle_button_name(status)
-    status ? 'Disapprove' : 'Approve'
+  def toggle_button_name(approved)
+    approved ? 'Disapprove' : 'Approve'
   end
 
   private

@@ -20,10 +20,10 @@ RSpec.describe ArticleHelper do
       expect(author_name(articles.first)).to eq('Test User')
     end
 
-    it 'returns "without author" text' do
+    it 'returns "Deleted user" text' do
       article.author.destroy
       article.reload
-      expect(author_name(article)).to eq('without author')
+      expect(author_name(article)).to eq('Deleted user')
     end
   end
 end

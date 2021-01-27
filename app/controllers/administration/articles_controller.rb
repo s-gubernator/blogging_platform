@@ -6,7 +6,9 @@ module Administration
 
     def index
       authorize Article
-      @articles = Article.order('created_at DESC').page(params[:page])
+
+      @q = Article.ransack(params[:q])
+      @articles = @q.result.includes(:topic, :author).page(params[:page])
     end
 
     def show

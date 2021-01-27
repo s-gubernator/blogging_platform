@@ -2,8 +2,6 @@
 - navigation_add('Dashboard', administration_root_path)
 
 .container
-  = render 'shared/notice'
-
   = render 'index_search_form'
 
   = form_tag(approve_multiple_administration_articles_url, method: :patch) do

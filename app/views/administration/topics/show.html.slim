@@ -2,7 +2,5 @@
 - add_to_breadcrumbs(topic_breadcrumb_links)
 
 .container
-  = render 'shared/notice'
-
   h5= "Topic: #{@topic.name}"
   h5= link_to 'Edit', edit_administration_topic_path(@topic), class: 'link-as-button'

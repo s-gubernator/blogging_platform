@@ -5,7 +5,7 @@ class ArticlesController < ApplicationController
 
   def index
     authorize Article, :user_articles?
-    @articles = Article.where(user_id: current_user.id).page(params[:page])
+    @articles = current_user.articles.page(params[:page])
   end
 
   def show

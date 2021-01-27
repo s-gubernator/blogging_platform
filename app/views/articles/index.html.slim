@@ -1,0 +1,26 @@
+.container
+  = render 'shared/notice'
+  
+  h5 All my articles
+  table.striped
+    thead
+      tr
+        th Title
+        th Content
+        th Topic
+        th Author
+        th conspan='3'
+    tbody
+      - @articles.each do |article|
+        tr
+          td= article.title
+          td= truncate(article.content, length: 70)
+          td= article.topic.name
+          td= author_name(article)
+          td= link_to 'Show', article_path(article), class: 'link-as-button'
+          td= link_to 'Edit', edit_article_path(article), class: 'link-as-button'
+          td= link_to 'Destroy', article_path(article), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'
+  .center
+    = paginate @articles
+
+  h5= link_to 'Create new article', new_article_path, class: 'link-as-button'

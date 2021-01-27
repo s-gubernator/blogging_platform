@@ -85,6 +85,10 @@ table.striped > tbody > tr:nth-child(odd) {
   textarea.materialize-textarea {
     border-bottom: 1px solid $red;
   }
+
+  textarea {
+    border: 1px solid $red;
+  }
 }
 
 .hint {

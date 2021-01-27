@@ -1,0 +1,12 @@
+.default-card.z-depth-1
+  = simple_form_for(article, url: url) do |f|
+    .pink-text
+      = f.error_notification
+    .input_field
+      = f.input :title, autofocus: true
+    .input_field
+      = f.input :content, autofocus: true
+    .input_field
+      = f.association :topic, collection: Topic.order(:name), value_method: :id
+    .field
+      = f.button :submit, class: 'btn-zero-top-space'

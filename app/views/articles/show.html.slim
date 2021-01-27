@@ -1,0 +1,12 @@
+.container
+  - if current_user
+    h5= render 'shared/notice'
+
+  .article-topic
+    = @article.topic.name
+  .article-title
+    = @article.title
+  .article-author
+    = author_name(@article)
+  .article-content
+    = @article.content

@@ -1,0 +1,13 @@
+.container
+    h4 Latest articles
+    table
+      tbody
+        - @articles.each do |article|
+          tr.card
+            td
+              .card-title= article.title
+              .card-content= truncate(article.content, length: 70)
+            td= article.created_at.strftime('%d %b %Y')
+            td
+              = link_to article_path(article), class: 'material-icon-link' do
+                i.material-icons send

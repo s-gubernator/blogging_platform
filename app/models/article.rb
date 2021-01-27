@@ -31,11 +31,7 @@ class Article < ApplicationRecord
     where(id: ids).update(approved: true)
   end
 
-  def approve
-    update(approved: true)
-  end
-
-  def disapprove
-    update(approved: false)
+  def toggle_approve
+    update(approved: !approved)
   end
 end

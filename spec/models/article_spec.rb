@@ -25,7 +25,7 @@ RSpec.describe Article, type: :model do
   end
 
   describe 'associations' do
-    it { expect(article).to belong_to(:topic) }
+    it { expect(article).to belong_to(:topic).optional }
     it { expect(article).to belong_to(:author).class_name('User').optional }
   end
 

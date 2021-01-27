@@ -2,21 +2,20 @@
 - navigation_add('Dashboard', administration_root_path)
 
 .container
-  h5 All articles
+  = render 'index_search_form'
+
   table.striped
     thead
       tr
-        th Title
-        th Content
-        th Topic
-        th Author
+        th= sort_link(@q, :topic_name)
+        th= sort_link(@q, :title)
+        th= sort_link(@q, :author_first_name_or_author_last_name)
         th
     tbody
       - @articles.each do |article|
         tr
-          td= article.title
-          td= truncate(article.content, length: 70)
           td= article.topic.name
+          td= article.title
           td= author_name(article)
           td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
   .center

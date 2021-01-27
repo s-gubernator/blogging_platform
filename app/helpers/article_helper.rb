@@ -2,7 +2,7 @@
 
 module ArticleHelper
   def author_name(article)
-    article.author.present? ? article.author.full_name : 'without author'
+    article.author.present? ? article.author.full_name : 'Deleted user'
   end
 
   def article_breadcrumb_links

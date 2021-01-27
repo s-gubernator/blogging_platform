@@ -26,4 +26,19 @@ RSpec.describe ArticleHelper do
       expect(author_name(article)).to eq('Deleted user')
     end
   end
+
+  describe '#topic_name' do
+    let(:topic) { create(:topic, name: 'Test') }
+    let(:article) { create(:article, topic_id: topic.id) }
+
+    it 'returns topic name' do
+      expect(topic_name(article)).to eq('Test')
+    end
+
+    it 'returns "uncategorized" text' do
+      article.topic.destroy
+      article.reload
+      expect(topic_name(article)).to eq('uncategorized')
+    end
+  end
 end

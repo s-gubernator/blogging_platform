@@ -1,10 +1,12 @@
-nav.navbar-fixed.cyan.darken-4
+nav.navbar-fixed.white
   .container
     a.sidenav-trigger data-target="slide-out" href="#"
       i.material-icons menu
     .nav-wrapper
       .brand-logo
-        = link_to 'Logo', root_path
+        = link_to administration_root_path do
+          = image_pack_tag 'brand_icon.png', alt: 'Main logo'
+          span Admin Area
       ul.right.hide-on-med-and-down.highlighted
         li= main_nav_link('Dashboard', administration_root_path)
         li= main_nav_link('Users', administration_users_path)

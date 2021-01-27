@@ -44,3 +44,10 @@ body {
 .spaced-left {
   padding-left: 1.2em;
 }
+
+.brand-logo {
+  span {
+    padding-left: 0.5em;
+    color: $slategray;
+  }
+}

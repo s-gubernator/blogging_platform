@@ -9,12 +9,13 @@ require("packs/shared")
 
 document.addEventListener('DOMContentLoaded', () => {
   let selectAll = document.getElementById('select-all');
+  if (selectAll) {
+    selectAll.addEventListener('click', () => {
+      let checkboxes = document.querySelectorAll('input[type=checkbox]');
 
-  selectAll.addEventListener('click', () => {
-    let checkboxes = document.querySelectorAll('input[type=checkbox]');
-    
-    checkboxes.forEach( (checkbox) => {
-      checkbox.checked = true;
+      checkboxes.forEach( (checkbox) => {
+        checkbox.checked = true;
+      });
     });
-  });
+  };
 });

@@ -8,7 +8,7 @@ describe ArticlePolicy do
   let(:simple_user) { build(:user) }
   let(:admin_user) { build(:user, :admin) }
 
-  permissions :index?, :show? do
+  permissions :index?, :show?, :approve_multiple?, :approve?, :disapprove? do
     it 'denies access for visitor' do
       expect(article_policy).not_to permit(nil)
     end

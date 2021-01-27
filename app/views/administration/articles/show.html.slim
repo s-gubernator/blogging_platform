@@ -2,6 +2,8 @@
 - add_to_breadcrumbs(article_breadcrumb_links)
 
 .container
+  = render 'shared/notice'
+
   table
     tbody
       tr
@@ -12,7 +14,15 @@
         td= @article.content
       tr
         th Topic
-        td= @article.topic.name
+        td= topic_name(@article)
       tr
         th Author
         td= author_name(@article)
+      tr
+        th Approved?
+        td= @article.approved
+
+  - if @article.approved
+    = render 'form', article: @article, url: disapprove_administration_article_url(@article), button_name: 'Disapprove'
+  - else
+    = render 'form', article: @article, url: approve_administration_article_url(@article), button_name: 'Approve'

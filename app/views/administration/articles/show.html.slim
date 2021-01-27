@@ -18,6 +18,9 @@
       tr
         th Author
         td= author_name(@article)
+      tr
+        th Approved?
+        td= @article.approved
 
   - if @article.approved
     = render 'form', article: @article, url: disapprove_administration_article_url(@article), button_name: 'Disapprove'

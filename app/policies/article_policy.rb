@@ -8,7 +8,7 @@ class ArticlePolicy < ApplicationPolicy
   def show?
     user&.role_admin?
   end
-  
+
   def approve_multiple?
     user&.role_admin?
   end
@@ -20,7 +20,7 @@ class ArticlePolicy < ApplicationPolicy
   def disapprove?
     user&.role_admin?
   end
- 
+
   def user_articles?
     user.present?
   end

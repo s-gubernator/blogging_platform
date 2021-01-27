@@ -17,7 +17,7 @@ module ArticleHelper
   end
 
   def status_class(article)
-    article.approved ?  'success' : 'danger'
+    article.approved ? 'success' : 'danger'
   end
 
   def status_mapping

@@ -16,7 +16,7 @@
 class Article < ApplicationRecord
   ARTICLES_PER_PAGE = 15
 
-  scope :by_newest, -> { order("created_at DESC") }
+  scope :by_newest, -> { order('created_at DESC') }
   scope :approved, -> { where(approved: true) }
 
   belongs_to :topic, optional: true
@@ -28,14 +28,14 @@ class Article < ApplicationRecord
   paginates_per(ARTICLES_PER_PAGE)
 
   def self.approve_all(ids)
-    where(id: ids).update_all(approved: true)
+    where(id: ids).update(approved: true)
   end
 
   def approve
-    update_attribute(:approved, true)
+    update(approved: true)
   end
 
   def disapprove
-    update_attribute(:approved, false)
+    update(approved: false)
   end
 end

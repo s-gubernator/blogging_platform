@@ -3,6 +3,9 @@ container
     = render 'shared/notice'
 
     - if current_user
-      = render 'logged_user_home'
+      h3= "Hello, #{current_user.full_name}"
+      p= "Your role is #{current_user.role}"
     - else
-      = render 'visitor_home'
+      h3 Hello in "Blogging Platform"
+
+    = render 'articles_list'

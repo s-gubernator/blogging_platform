@@ -20,6 +20,10 @@ module ArticleHelper
     article.approved ?  'success' : 'danger'
   end
 
+  def status_mapping
+    [['Approved', true], ['Not Approved', false]]
+  end
+
   private
 
   def helpers

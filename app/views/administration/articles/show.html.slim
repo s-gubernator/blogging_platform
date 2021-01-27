@@ -21,6 +21,6 @@
         td= @article.approved
 
   - if @article.approved
-    = render 'form', article: @article, url: disapprove_administration_article_url(@article), button_name: 'Disapprove'
+    = render 'form', article: @article, url: toggle_approve_administration_article_path(@article), button_name: 'Disapprove'
   - else
-    = render 'form', article: @article, url: approve_administration_article_url(@article), button_name: 'Approve'
+    = render 'form', article: @article, url: toggle_approve_administration_article_path(@article), button_name: 'Approve'

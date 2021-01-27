@@ -2,7 +2,7 @@
 
 module Administration
   class ArticlesController < Administration::BaseController
-    before_action :set_article, only: %i[show approve disapprove]
+    before_action :set_article, only: %i[show toggle_approve]
 
     def index
       authorize Article
@@ -22,18 +22,12 @@ module Administration
       redirect_to administration_articles_url, notice: 'Articles approved'
     end
 
-    def approve
-      authorize @article, :approve?
+    def toggle_approve
+      authorize @article, :toggle_approve?
 
-      @article.approve
-      redirect_to administration_article_url(@article), notice: 'Article approved.'
-    end
-
-    def disapprove
-      authorize @article, :disapprove?
-
-      @article.disapprove
-      redirect_to administration_article_url(@article), notice: 'Article disapproved.'
+      @article.toggle_approve
+      status = I18n.t("article.approved.#{@article.approved}")
+      redirect_to administration_article_url(@article), notice: "Article #{status}"
     end
 
     private

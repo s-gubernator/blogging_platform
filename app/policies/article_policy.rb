@@ -13,11 +13,7 @@ class ArticlePolicy < ApplicationPolicy
     user&.role_admin?
   end
 
-  def approve?
-    user&.role_admin?
-  end
-
-  def disapprove?
+  def toggle_approve?
     user&.role_admin?
   end
 

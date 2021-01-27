@@ -10,8 +10,7 @@ Rails.application.routes.draw do
     resources :topics
     resources :articles, only: %i(index show) do
       patch :approve_multiple, on: :collection
-      patch :approve, on: :member
-      patch :disapprove, on: :member
+      patch :toggle_approve, on: :member
     end
   end
 

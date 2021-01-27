@@ -11,9 +11,9 @@
       thead
         tr
           th= sort_link(@q, :approved, 'Approved?')
-          th= sort_link(@q, :topic_name)
+          th= sort_link(@q, :topic_name, 'Topic')
           th= sort_link(@q, :title)
-          th= sort_link(@q, :author_first_name_or_author_last_name)
+          th= sort_link(@q, :author_first_name_or_author_last_name, 'Author')
           th
       tbody
         - @articles.each do |article|
@@ -22,7 +22,7 @@
               label
                 = check_box_tag('article_ids[]', article.id, article.approved)
                 span
-            td= article.topic.name
+            td= topic_name(article)
             td= article.title
             td= author_name(article)
             td= link_to 'Show', administration_article_path(article), class: 'link-as-button'

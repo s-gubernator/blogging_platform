@@ -73,20 +73,36 @@ nav {
     }
 
     .material-icons{
-      display: inline-flex;
-      vertical-align: middle;
+      position: relative;
+      top: 0.2em;
+      font-size: 1.2em;
+    }
+
+    i.right {
+      margin-left: 0.2em;
+    }
+
+    i.left {
+      margin-right: 0.4em;
+    }
+
+    a {
+      color: $slategray;
+
+      &:hover {
+        color: $slategray;
+      }
     }
 
     .dropdown-content {
        min-width: 15em;
-       top: 3.7em !important;
+       top: 100% !important;
 
       a {
         font-size: 1em;
         color: $slategray;
 
         &:hover {
-          color: $dark-cian;
           background: $light-cian;
         }
       }

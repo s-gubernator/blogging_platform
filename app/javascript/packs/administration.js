@@ -8,9 +8,8 @@ require("@rails/ujs").start()
 require("packs/shared")
 
 document.addEventListener('DOMContentLoaded', () => {
-  let menuDropdown = document.querySelectorAll('.menu-dropdown');
+  let menuDropdown = document.querySelector('.dropdown-trigger');
   let dropdownOptions = {
-    'closeOnClick': true,
     'hover': true };
   M.Dropdown.init(menuDropdown, dropdownOptions);
 

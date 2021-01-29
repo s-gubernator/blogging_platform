@@ -8,13 +8,22 @@ nav.nav-extended.white
            = image_pack_tag 'brand_icon.png', alt: 'Main logo'
            span Admin Area
       #upper-menu.right
-        a.btn.btn-flat.dropdown-trigger.menu-dropdown href='#' data-target='user-dropdown'
-            = current_user.full_name
+        .dropdown-trigger data-target='user-dropdown'
+          = link_to href: '#', class: 'btn btn-flat' do
+            i.material-icons.left account_box
+            span.hide-on-med-and-down
+              = current_user.full_name
             i.material-icons.right expand_more
         ul#user-dropdown.dropdown-content
-          li= link_to 'Show profile', user_path(current_user)
-          li= link_to 'Edit profile', edit_registration_path(current_user)
-          li= link_to "Sign Out", destroy_user_session_path, method: :delete
+          li= link_to user_path(current_user) do
+            i.material-icons.left account_circle
+            span Show profile
+          li= link_to edit_registration_path(current_user) do
+            i.material-icons.left edit
+            span Edit profile
+          li= link_to destroy_user_session_path, method: :delete do
+            i.material-icons.left power_settings_new
+            span Log out
 
   #lower-menu
     .container

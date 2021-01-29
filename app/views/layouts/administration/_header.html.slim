@@ -1,16 +1,19 @@
-nav.navbar-fixed.white
-  .container
-    a.sidenav-trigger data-target="slide-out" href="#"
-      i.material-icons menu
-    .nav-wrapper
+nav.nav-extended.white
+  .navbar-fixed
+    .container
+      a.sidenav-trigger data-target='slide-out' href='#'
+        i.material-icons menu
       .brand-logo
-        = link_to administration_root_path do
-          = image_pack_tag 'brand_icon.png', alt: 'Main logo'
-          span Admin Area
-      ul.right.hide-on-med-and-down.highlighted
+         = link_to administration_root_path do
+           = image_pack_tag 'brand_icon.png', alt: 'Main logo'
+           span Admin Area
+  #lower-menu
+    .container
+      ul.hide-on-med-and-down
         li= main_nav_link('Dashboard', administration_root_path)
         li= main_nav_link('Users', administration_users_path)
         li= main_nav_link("Topics", administration_topics_path)
         li= main_nav_link('Articles', administration_articles_path)
 
-= render 'layouts/administration/mobile_menu'
+.hide-on-large-only
+  = render 'layouts/administration/mobile_menu'

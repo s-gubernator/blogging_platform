@@ -1,8 +1,3 @@
-.sidenav {
-  background-color: $cian;
-  width: 20em;
-}
-
 #toast-container {
   position: fixed !important;
   top: 4em !important;
@@ -85,25 +80,6 @@
 
   a:hover {
     color: $teal;
-  }
-}
-
-.highlighted {
-  li.active {
-    background-color: $light-cian !important;
-
-    a {
-      color: $teal;
-
-      &:hover {
-        color: $light-cian;
-        background: $teal;
-      }
-    }
-  }
-
-  a:hover {
-    background: $teal;
   }
 }
 

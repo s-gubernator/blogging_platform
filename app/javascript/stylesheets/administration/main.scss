@@ -53,24 +53,46 @@ body {
 }
 
 nav {
-  ul {
-    a {
-    color: $teal;
+  i.material-icons {
+    color: $slategray;
+  }
+
+  a {
+    color: $slategray;
 
     &:hover {
-      color: $white;
-    }
+      color: $dark-cian;
+      background-color: transparent;
     }
   }
-  i.material-icons {
-    color: $slategray;
-  }
-}
 
-nav {
-  i.material-icons {
-    color: $slategray;
+  #upper-menu {
+    .btn {
+      background-color: $white;
+      color: $slategray;
+    }
+
+    .material-icons{
+      display: inline-flex;
+      vertical-align: middle;
+    }
+
+    .dropdown-content {
+       min-width: 15em;
+       top: 3.7em !important;
+
+      a {
+        font-size: 1em;
+        color: $slategray;
+
+        &:hover {
+          color: $dark-cian;
+          background: $light-cian;
+        }
+      }
+    }
   }
+
   #lower-menu {
     border-top: 0.1em solid $light-lightgrey;
     ul {

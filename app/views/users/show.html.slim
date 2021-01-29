@@ -1,0 +1,21 @@
+.container
+   table
+     tbody
+       tr
+         th Full name
+         td= @user.full_name
+       tr
+         th Role
+         td= @user.role
+       tr
+         th Email
+         td= @user.email
+       tr
+         th Articles count
+         td= @user.articles.count
+       tr
+         th Edit profile
+         td= link_to 'Edit', edit_registration_path(current_user), class: 'link-as-button'
+       tr
+         th Delete profile
+         td= link_to 'Delete', user_path(@user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'link-as-button'

@@ -7,6 +7,15 @@ nav.nav-extended.white
          = link_to administration_root_path do
            = image_pack_tag 'brand_icon.png', alt: 'Main logo'
            span Admin Area
+      #upper-menu.right
+        a.btn.btn-flat.dropdown-trigger.menu-dropdown href='#' data-target='user-dropdown'
+            = current_user.full_name
+            i.material-icons.right expand_more
+        ul#user-dropdown.dropdown-content
+          li= link_to 'Show profile', user_path(current_user)
+          li= link_to 'Edit profile', edit_registration_path(current_user)
+          li= link_to "Sign Out", destroy_user_session_path, method: :delete
+
   #lower-menu
     .container
       ul.hide-on-med-and-down

@@ -11,8 +11,8 @@
          th Email
          td= @user.email
        tr
-         th Articles count
-         td= @user.articles.count
+         th Articles
+         td= link_to I18n.t('article.index.count', count: @user.articles.count), articles_path
        tr
          th Edit profile
          td= link_to 'Edit', edit_registration_path(current_user), class: 'link-as-button'

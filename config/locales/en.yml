@@ -34,3 +34,7 @@ en:
     approved:
       'true': 'approved'
       'false': 'disapproved'
+    index:
+      count:
+        one: 'One article'
+        other: "%{count} articles"

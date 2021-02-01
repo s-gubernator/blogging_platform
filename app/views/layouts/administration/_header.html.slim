@@ -21,6 +21,7 @@ nav.nav-extended.white
           li= link_to edit_registration_path(current_user) do
             i.material-icons.left edit
             span Edit profile
+          li.divider tabindex="-1"
           li= link_to destroy_user_session_path, method: :delete do
             i.material-icons.left power_settings_new
             span Log out

@@ -24,7 +24,7 @@
             td= article.title
             td= author_name(article)
             td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
-        - if @articles.not_approved.any? 
+        - if @articles.not_approved.any?
           tr
             td
               label

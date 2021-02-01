@@ -24,13 +24,15 @@
             td= article.title
             td= author_name(article)
             td= link_to 'Show', administration_article_path(article), class: 'link-as-button'
-        tr
-          td
-            label
-              = check_box_tag 'select-all'
-              span Check all
-          td colspan='4'
-    = submit_tag 'Approve Checked', class: 'btn'
+        - if @articles.not_approved.any?
+          tr
+            td
+              label
+                = check_box_tag 'select-all'
+                span Check all
+            td colspan='4'
+    - if @articles.not_approved.any?
+      = submit_tag 'Approve Checked', class: 'btn'
 
   .center
     = paginate @articles

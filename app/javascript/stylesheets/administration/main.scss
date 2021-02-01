@@ -44,3 +44,132 @@ body {
 .spaced-left {
   padding-left: 1.2em;
 }
+
+.brand-logo {
+  span {
+    padding-left: 0.5em;
+    color: $slategray;
+  }
+}
+
+nav {
+  i.material-icons {
+    color: $slategray;
+  }
+
+  a {
+    color: $slategray;
+
+    &:hover {
+      color: $dark-cian;
+      background-color: transparent;
+    }
+  }
+
+  #upper-menu {
+    .btn {
+      background-color: $white;
+      color: $slategray;
+    }
+
+    .material-icons{
+      position: relative;
+      top: 0.2em;
+      font-size: 1.2em;
+    }
+
+    i.right {
+      margin-left: 0.2em;
+    }
+
+    i.left {
+      margin-right: 0.4em;
+    }
+
+    a {
+      color: $slategray;
+
+      &:hover {
+        color: $slategray;
+      }
+    }
+
+    .dropdown-content {
+       min-width: 15em;
+       top: 100% !important;
+
+      a {
+        font-size: 1em;
+        color: $slategray;
+
+        &:hover {
+          background: $light-cian;
+        }
+      }
+    }
+  }
+
+  #lower-menu {
+    border-top: 0.1em solid $light-lightgrey;
+    ul {
+      display: inline;
+
+      li.active {
+        background-color: $white;
+
+        a {
+          color: $teal;
+          border-bottom: 0.2em solid $teal;
+          background-color: transparent;
+
+          &:hover {
+            color: $dark-cian;
+            background-color: transparent;
+          }
+        }
+      }
+      a {
+        color: $slategray;
+        background-color: transparent;
+
+        &:hover {
+          color: $dark-cian;
+          background-color: transparent;
+        }
+      }
+    }
+  }
+}
+
+.sidenav {
+  color: $slategray;
+  background-color: $white;
+  width: 17em;
+
+  li.active {
+    a {
+      color: $dark-cian;
+      border-left: 0.2em solid $teal;
+      background-color: $light-cian;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  a {
+    color: $slategray;
+    background-color: $white;
+
+    &:hover {
+      color: $dark-cian;
+      background-color: transparent;
+    }
+  }
+}
+
+.sidenav-overlay {
+  background-color: transparent;
+  opacity: 0;
+}

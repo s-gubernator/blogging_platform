@@ -1,14 +1,38 @@
-nav.navbar-fixed.cyan.darken-4
-  .container
-    a.sidenav-trigger data-target="slide-out" href="#"
-      i.material-icons menu
-    .nav-wrapper
+nav.nav-extended.white
+  .navbar-fixed
+    .container
+      a.sidenav-trigger data-target='slide-out' href='#'
+        i.material-icons menu
       .brand-logo
-        = link_to 'Logo', root_path
-      ul.right.hide-on-med-and-down.highlighted
+         = link_to administration_root_path do
+           = image_pack_tag 'brand_icon.png', alt: 'Main logo'
+           span Admin Area
+      #upper-menu.right
+        .dropdown-trigger data-target='user-dropdown'
+          = link_to href: '#', class: 'btn btn-flat' do
+            i.material-icons.left account_box
+            span.hide-on-med-and-down
+              = current_user.full_name
+            i.material-icons.right expand_more
+        ul#user-dropdown.dropdown-content
+          li= link_to user_path(current_user) do
+            i.material-icons.left account_circle
+            span Show profile
+          li= link_to edit_registration_path(current_user) do
+            i.material-icons.left edit
+            span Edit profile
+          li.divider tabindex="-1"
+          li= link_to destroy_user_session_path, method: :delete do
+            i.material-icons.left power_settings_new
+            span Log out
+
+  #lower-menu
+    .container
+      ul.hide-on-med-and-down
         li= main_nav_link('Dashboard', administration_root_path)
         li= main_nav_link('Users', administration_users_path)
         li= main_nav_link("Topics", administration_topics_path)
         li= main_nav_link('Articles', administration_articles_path)
 
-= render 'layouts/administration/mobile_menu'
+.hide-on-large-only
+  = render 'layouts/administration/mobile_menu'

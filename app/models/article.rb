@@ -18,6 +18,7 @@ class Article < ApplicationRecord
 
   scope :by_newest, -> { order('created_at DESC') }
   scope :approved, -> { where(approved: true) }
+  scope :not_approved, -> { where(approved: false) }
 
   belongs_to :topic, optional: true
   belongs_to :author, class_name: 'User', foreign_key: 'user_id', inverse_of: :articles, optional: true

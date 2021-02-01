@@ -9,6 +9,30 @@
   flex: 1;
 }
 
+.sidenav {
+  background-color: $cian;
+  width: 20em;
+}
+
+.highlighted {
+  li.active {
+    background-color: $light-cian !important;
+
+    a {
+      color: $teal;
+
+      &:hover {
+        color: $light-cian;
+        background: $teal;
+      }
+    }
+  }
+
+  a:hover {
+    background: $teal;
+  }
+}
+
 .error {
   color: $pale-violet-red;
   text-align: left;

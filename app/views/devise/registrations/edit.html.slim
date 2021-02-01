@@ -12,3 +12,6 @@ center
       = f.input :password_confirmation, placeholder: 'Password confirmation', label: false, autocomplete: 'new-password'
       = f.input :current_password, placeholder: 'Current password', label: false, autocomplete: 'current-password', hint: '*we need your current password to confirm your changes'
       = f.button :submit, 'Update', class: 'btn'
+
+    hr
+    = link_to 'Show profile', user_path(current_user), class: 'link-as-button-big'

@@ -11,7 +11,7 @@ module Administration
     end
 
     def destroy
-      authorize @user
+      authorize @user, :admin_destroy?
       @user.destroy
       redirect_to administration_users_url, notice: 'User was successfully destroyed.'
     end

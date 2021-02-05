@@ -2,12 +2,18 @@
   "name": "blogging-platform",
   "private": true,
   "dependencies": {
+    "@babel/preset-react": "^7.12.13",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "core-js": "^3.8.1",
     "materialize-css": "^1.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react_ujs": "^2.6.1",
     "regenerator-runtime": "^0.13.7",
     "turbolinks": "^5.2.0"
   },

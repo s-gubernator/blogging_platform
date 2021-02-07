@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import './ShowCount.css';
 
 class ShowCount extends React.Component {
   constructor(props) {
@@ -35,9 +36,6 @@ class ShowCount extends React.Component {
 
   render() {
     return (
-      // <div style={{
-      //    position: 'absolute', left: '50%', top: '50%',
-      //    transform: 'translate(-50%, -50%)' }}>
       <div>
         <p>Current Count: { this.state.count }</p>
         <button className="inc" onClick={ (e) => this.increment(e) }>Increment!</button>

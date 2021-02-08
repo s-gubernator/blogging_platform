@@ -5,10 +5,10 @@ class Article extends React.Component {
   render () {
     return (
       <React.Fragment>
-        <div class='article-title'>
+        <div className='article-title'>
           <a href={this.props.path}>{this.props.title}</a>
         </div>
-        <div class='article-content'>
+        <div className='article-content'>
           {this.props.content}
         </div>
       </React.Fragment>

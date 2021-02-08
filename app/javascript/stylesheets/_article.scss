@@ -14,7 +14,13 @@
   font-size: 0.9em;
 }
 
-.article-content {
+.article-body {
   margin-top: 1em;
   font-size: 1.2em;
+}
+
+.article-meta-details {
+  margin-top: 1em;
+  font-size: 0.8em;
+  color: $darkslategray;
 }

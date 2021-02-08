@@ -1,0 +1,16 @@
+- obj.each do |article|
+  .row
+    .col-s6
+      .default-card.z-depth-1
+        = react_component('Article', { title: article.title,
+                                       path: article_path(article),
+                                       content: truncate(article.content, length: 100),
+                                       author: author_name(article),
+                                       created_at: time_ago_in_words(article.created_at),
+                                       updated_at: time_ago_in_words(article.updated_at),
+                                       topic:  topic_name(article) } )
+        .article-actions
+          = link_to 'Edit this article', edit_article_path(article), class: 'btn'
+          = link_to 'Delete this article', article_path(article), method: :delete, \
+            data: { confirm: 'Are you sure you want to delete this article?' },    \
+            class: 'btn btn-danger'

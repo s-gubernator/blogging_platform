@@ -1,6 +1,6 @@
 .container
-  h5 = "#{current_user.first_name}'s articles"
-  = render 'article', obj: @articles 
+  h5= "#{current_user.first_name}'s articles"
+  = render 'article', obj: @articles
   .center
     = paginate @articles
 

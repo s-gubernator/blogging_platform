@@ -61,6 +61,14 @@
   text-transform: none;
 }
 
+.btn-danger {
+  background-color: $red;
+
+  &:hover {
+    background-color: $pale-violet-red;
+  }
+}
+
 .sort_link {
   color: $slategray;
   text-decoration: underline;

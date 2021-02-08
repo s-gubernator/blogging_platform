@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import './ShowCount.css';
+import './ShowCount.scss';
 
 class ShowCount extends React.Component {
   constructor(props) {
